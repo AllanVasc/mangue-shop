@@ -1,0 +1,70 @@
+.logo{
+    display: block;
+    margin: 0 auto;
+}
+
+.bem-vindo{
+    position: absolute;
+    width: 131px;
+    height: 29px;
+    left: calc(50% - 131px/2 - 0.5px);
+    top: calc(50% - 29px/2 - 151.5px);
+}
+
+.texto{
+    position: absolute;
+    width: 433px;
+    height: 48px;
+    left: calc(50% - 433px/2 - 0.5px);
+    top: calc(50% - 48px/2 - 79px);
+}
+
+
+.boas-vindas{
+    text-align:center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FBF3F2;
+}
+
+.entrar{
+    position: absolute;
+    width: 423px;
+    height: 52px;
+    top: 663px;
+    background: #FA991C;
+    border-radius: 50px;
+    left: calc(50% - 433px/2 - 0.5px);
+}
+
+.criar-conta{
+    position: absolute;
+    width: 423px;
+    height: 52px;
+    left: calc(50% - 433px/2 - 0.5px);
+    top: 788px;
+    background: #FBF3F2;
+    border-radius: 50px;
+}
+
+.ou{
+    position: absolute;
+    width: 423px;
+    height: 29px;
+    left: calc(50% - 433px/2 - 0.5px);
+    top: 728px;
+    text-align:center;
+}
+
+btn-fnt{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #000000;
+}
