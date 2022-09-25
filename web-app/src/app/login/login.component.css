@@ -1,0 +1,91 @@
+.logo{
+    position: absolute;
+    width: 313px;
+    height: 188px;
+    left: calc(50% - 313px/2 - 0.5px);
+    top: calc(50% - 188px/2 - 320px);
+}
+
+.design-login{
+    position: absolute;
+    width: 480px;
+    height: 610px;
+    left: calc(50% - 480px/2 + 2px);
+    top: calc(50% - 610px/2 + 79px);
+
+    background: #FBF3F2;
+    opacity: 0.6;
+    border-radius: 50px;
+}
+
+.title-container {
+    text-align: center;
+}
+
+.msg-erro {
+    color: #ff0000;
+    text-align: center;
+    margin: 0px;
+    height: 19px;
+}
+  
+.container {
+    display: grid;
+    grid-template-rows: repeat(3, minmax(20px, max-content));
+    row-gap: 20px;
+  
+    justify-content: center;
+}
+
+.item {
+    display: grid;
+    row-gap: 5px;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+  
+.item label {
+    margin: 0;
+    text-align: left;
+    padding-left: 5px;
+}
+
+/*
+    Criação dos blocos
+*/
+.container {
+    display: grid;
+    grid-template-rows: repeat(3, minmax(20px, max-content));
+    row-gap: 20px;
+
+    justify-content: center;
+}
+
+/*
+    Botão de Input
+*/
+input {
+    margin: 0;
+    padding-left: 10px;
+    height: 28px;
+    width: 300px;
+  
+    border-radius: 50px;
+    border: 1px solid #FBF3F2;;
+  
+    font-family: 'Inter';
+    font-style: normal;
+    text-decoration: none;
+    opacity: 0.5;
+}
+
+.button-entrar{
+    position: absolute;
+    width: 396px;
+    height: 52px;
+    left: 524px;
+    top: 733px;
+    background: #FA991C;
+    border-radius: 50px;
+}

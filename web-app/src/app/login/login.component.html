@@ -1,0 +1,46 @@
+<form [formGroup]="loginForm" name="login">
+  <div class="title-container">
+    <img src="assets/images/mangueshop-logo.png" alt="Logo" class="logo" />
+  </div>
+  
+  <div class="container">
+    <div class="design-login">
+
+      <div class="item">
+        <label for="email">E-mail</label>
+        <input
+          formControlName="email"
+          type="email"
+          name="email"
+          placeholder="nome@email.com"
+          required
+        />
+      </div>
+
+      <div class="item">
+        <label for="psw">Senha</label>
+        <input
+          formControlName="password"
+          type="password"
+          name="password"
+          placeholder="•••••••••"
+          required
+        />
+      </div>
+
+      <div class="item">
+        <button [routerLink]="'/dashboard'">
+          ENTRAR
+        </button>
+      </div>
+
+      <div class="item">
+        <button routerLink="../forgot-password/">
+          Esqueceu a senha?
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</form>
