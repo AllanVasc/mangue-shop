@@ -1,0 +1,75 @@
+.topnav{
+    overflow: hidden;
+    background: #1a687e;
+}
+
+.topnav h4{
+    font-family: 'Inter';
+    font-style: normal;
+    float: left;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.topnav img{
+    float: left;
+    text-align: center;
+    text-decoration: none;
+    max-width: 70%;
+    height: auto
+}
+
+.topnav .right{
+    font-family: 'Inter';
+    font-style: normal;
+    float: right;
+    padding-right: 20px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.topnav .circle{
+    margin-top: 15px;
+    margin-right: 20px;
+    float: right;
+    border-radius: 70%;
+    width: 80px;
+    height: 80px; 
+    background: white;
+}
+
+.topnav .bell{
+    margin-top: 45px;
+    margin-right: 20px;
+    float: right;
+    display: block;
+}
+
+.leftnav{
+    position: fixed;
+    width: 30%;
+    height: 100%;
+    background: #032539;
+}
+
+.leftnav a{
+    color: white;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+    transition: 0.3s;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+}
+
+.leftnav a:hover{
+    background-color: #001A29;
+}

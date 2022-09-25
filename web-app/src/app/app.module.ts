@@ -10,25 +10,23 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CarsComponent } from './cars/cars.component';
 import { CarService } from './cars/cars.service';
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+//import { routing } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CarsComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        component: CarsComponent
-      }
-    ])
+    HttpModule
   ],
   providers: [CarService],
   bootstrap: [AppComponent]
