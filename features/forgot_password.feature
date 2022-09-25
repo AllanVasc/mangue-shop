@@ -1,5 +1,3 @@
-
-
 Feature: Esqueci a senha
     As uma loja que possui uma conta no aplicativo
     I want to modificar minha senha caso tenha esquecido
