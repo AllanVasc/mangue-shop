@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule }   from '@angular/router';
 import { HttpModule } from '@angular/http';
 
@@ -12,6 +12,8 @@ import { CarService } from './cars/cars.service';
 
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 //import { routing } from './app-routing.module';
 
@@ -21,12 +23,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NavbarComponent,
     CarsComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule
   ],
   providers: [CarService],
