@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { RegisterComponent } from './register/register.component';
 
 //import { routing } from './app-routing.module';
 
@@ -25,7 +26,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     HomeComponent,
     DashboardComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
