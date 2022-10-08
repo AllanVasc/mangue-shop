@@ -1,0 +1,85 @@
+<div class="main">
+  <div class="logo-container">
+    <img class="logo" src="assets/images/mangueshop-logo.png"/>
+  </div>
+  <div class="container">
+    <form>
+      <div class="g1">
+        <div class="input-box">
+          <span class="details">Nome</span>
+          <input type="text" placeholder="Insira seu nome" required>
+        </div>
+        <div class="input-box">
+          <span class="details">CPF</span>
+          <input type="text" placeholder="Insira seu CPF" required>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="input-box">
+          <span class="details">País</span>
+          <input type="text" placeholder="Insira seu país" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Estado</span>
+          <input type="text" placeholder="Insira seu estado" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Bairro</span>
+          <input type="text" placeholder="Insira seu bairro" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Rua</span>
+          <input type="text" placeholder="Insira sua rua" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Número</span>
+          <input type="text" placeholder="Insira o número da rua" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Complemento</span>
+          <input type="text" placeholder="Insira o complemento" required>
+        </div>
+      </div>
+      <div class="g3">
+        <div class="input-box">
+          <span class="details">Nome de Exibição</span>
+          <input type="text" placeholder="Insira o nome de exibição" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Imagem ou Logo</span>
+          <input type="text" placeholder="Insira a imagem ou logo">
+        </div>
+      </div>
+      <div class="g4">
+        <div class="input-box">
+          <span class="details">Descrição</span>
+          <textarea rows="6"></textarea>
+        </div>
+      </div>
+      <div class="g5">
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input type="text" placeholder="Insira o seu email" required>
+        </div>
+      </div>
+      <div class="g6">
+        <div class="input-box">
+          <span class="details">Senha</span>
+          <input type="text" placeholder="Insira sua senha" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Confirmar senha</span>
+          <input type="text" placeholder="Insira sua senha" required>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="button">
+        <input type="submit" value="CONTINUAR" [routerLink]="'/finish-registration'">
+      </div>
+    </form>
+    <div>
+      <button class="button" [routerLink]="'/register'">VOLTAR</button>
+    </div>
+  </div>
+</div>

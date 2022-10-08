@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter';
+}
+
+.main{
+    padding: 0;
+    margin: 0;
+    height: 98vh;
+    width: 98vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.container{
+    padding: 30px;
+    width: 75%;
+    max-width: 900px;
+    background: rgba(250, 250, 250, 0.8);
+    border-radius: 20px;
+}
+
+.g1, .g3, .g5,.g6{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 35px;
+}
+
+.g2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+.g1 .input-box{
+    width: 90%;
+    height: 70px;
+}
+
+.g2 .input-box{
+    width: 90%;
+    height: 70px;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.details{
+    font-size: 16px;
+    display: block;
+    font-weight: bold;
+}
+
+.input-box input{
+    margin-top: 10px;
+    width: 90%;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+textarea{
+    margin-top: 10px;
+    margin-bottom: 25px;
+    width: 90%;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+.button input{
+    width: 350px;
+    height: 30px;
+    background: #FA991C;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Inter';
+}
+
+.button{
+    margin-top: 10px;
+    margin-left: calc(50% - 175px);
+    width: 350px;
+    height: 30px;
+    font-weight: bold;
+    background: #1C768F;
+    border-radius: 50px;
+    font-size: 15px;
+    font-family: 'Inter';
+}

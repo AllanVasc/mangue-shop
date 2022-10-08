@@ -1,4 +1,6 @@
+
 .container {
+    margin: 50px;
     padding: 20px;
     
     height: 610px;
@@ -7,7 +9,7 @@
     border-radius: 20px;
     background: rgba(250, 250, 250, 0.8);
     
-    display: grid;
+    display: flexbox;
     
     font-family: 'Inter';
     color: #000000;
@@ -15,12 +17,8 @@
     text-align: center;
 }
 
-.logo{
-    margin-bottom: 40px;
-}
 
-
-.title-container {
+.logo-container {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -33,41 +31,23 @@
 }
 
 .text-container {
+    margin-top: 50px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
     line-height: 44px;
-    text-align: left;
+    text-align: center;
 
     color: #000000;
 }
 
-.pf-button{
-    margin-bottom: -50px;
-    justify-self: center;
+button{
+    margin-top: 200px;
+    width: 350px;
     height: 60px;
     background: #FA991C;
     border-radius: 50px;
     font-size: 20px;
     font-family: 'Inter';
-    width: 400px;
-    background-image: url('../../assets/images/User.png');
-    background-size: 30px;
-    background-repeat: no-repeat;
-    background-position: 20px;
-}
-
-.pj-button{
-    justify-self: center;
-    height: 60px;
-    background: #FA991C;
-    border-radius: 50px;
-    font-size: 20px;
-    font-family: 'Inter';
-    width: 400px;
-    background-image: url('../../assets/images/enterprise.png');
-    background-size: 30px;
-    background-repeat: no-repeat;
-    background-position: 20px;
 }
