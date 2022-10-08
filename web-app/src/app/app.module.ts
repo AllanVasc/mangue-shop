@@ -15,6 +15,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { RegisterComponent } from './register/register.component';
+import { RegisterPFComponent } from './register-pf/register-pf.component';
+import { RegisterPJComponent } from './register-pj/register-pj.component';
+import { FinishRegistrationComponent } from './finish-registration/finish-registration.component';
 
 //import { routing } from './app-routing.module';
 
@@ -27,7 +30,10 @@ import { RegisterComponent } from './register/register.component';
     DashboardComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterPFComponent,
+    RegisterPJComponent,
+    FinishRegistrationComponent
   ],
   imports: [
     BrowserModule,
