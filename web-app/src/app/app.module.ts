@@ -20,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterPFComponent } from './register-pf/register-pf.component';
 import { RegisterPJComponent } from './register-pj/register-pj.component';
 import { FinishRegistrationComponent } from './finish-registration/finish-registration.component';
+import { FornecedorService } from './services/fornecedor.service';
 
 //import { routing } from './app-routing.module';
 
@@ -44,7 +45,7 @@ import { FinishRegistrationComponent } from './finish-registration/finish-regist
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [CarService],
+  providers: [FornecedorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Http} from '@angular/http';
 import { Fornecedor } from '../fornecedor';
+import { FornecedorService } from '../services/fornecedor.service';
 
 
 @Component({
@@ -10,10 +12,13 @@ import { Fornecedor } from '../fornecedor';
 })
 export class RegisterPFComponent implements OnInit {
 
-  server_ip = "http://localhost:3000/register";
-  fornecedor: Fornecedor;
+  private fornecedor: Fornecedor;
+  private fornecedorService: FornecedorService;
 
-  constructor() { }
+
+  constructor(_fornecedorService: FornecedorService) {
+    this.fornecedorService = _fornecedorService;
+  }
 
   ngOnInit() {
     this.fornecedor = new Fornecedor();
@@ -21,8 +26,8 @@ export class RegisterPFComponent implements OnInit {
 
   registerFornecedor(){
     debugger;
-
-    //this.http.post()
+    var ret = this.fornecedorService.create(this.fornecedor);
+    console.log(ret);
   }
 
 }
