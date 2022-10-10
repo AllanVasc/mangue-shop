@@ -1,8 +1,8 @@
 import express = require('express');
 import bodyParser = require("body-parser");
 
-import { CarService } from './src/cars-service';
-import { Car } from './src/car';
+import { Fornecedor } from './src/fornecedor';
+import { FornecedorService } from './src/fornecedor.service';
 
 var app = express();
 
@@ -16,53 +16,54 @@ app.use(allowCrossDomain);
 
 app.use(bodyParser.json());
 
-var carService: CarService = new CarService();
+var fornecedorService: FornecedorService = new FornecedorService();
+var fornecedorFileName = './database/fornecedor.json';
 
-app.get('/cars', function(req, res){
-  const cars = carService.get();
-  res.send(JSON.stringify(cars));
-});
 
-app.get('/cars/:id', function(req, res){
-  const id = req.params.id;
-  const car = carService.getById(id);
-  if (car) {
-    res.send(car);
-  } else {
-    res.status(404).send({ message: `Car ${id} could not be found`});
-  }
-});
-
-app.post('/cars', function(req: express.Request, res: express.Response){
-  const car: Car = <Car> req.body;
+app.post('/register', async function(req: express.Request, res: express.Response){
+  const fornecedor: Fornecedor = <Fornecedor> req.body;
   try {
-    const result = carService.add(car);
+    const result = fornecedorService.add(fornecedor);
     if (result) {
       res.status(201).send(result);
     } else {
-      res.status(403).send({ message: "Car list is full"});
+      res.status(403).send({ message: "Nao foi possivel adicionar o fornecedor"});
     }
   } catch (err) {
     const {message} = err;
-    res.status(400).send({ message })
+    console.log(message)
+    res.status(400).send({ message });
   }
 });
 
-app.put('/cars', function (req: express.Request, res: express.Response) {
-  const car: Car = <Car> req.body;
-  const result = carService.update(car);
-  if (result) {
-    res.send(result);
-  } else {
-    res.status(404).send({ message: `Car ${car.id} could not be found.`});
+
+// Autenticação do Login (Ajeitar Rota)
+app.post('/login', function(req, res) {
+  const email = req.body.email;
+  const password = req.body.password;
+  try {
+    const result = fornecedorService.authenticate(email, password);
+    if (result) {
+      res.status(201).send({ message: "Authenticated!"});
+    }
+    else{
+      res.status(403).send({ message: "Authentication error!"});
+    }
   }
-})
+  catch (err) {
+    const { message } = err;
+    res.status(400).send({ message });
+  }
+});
 
 var server = app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+  console.log('Server listening on port 3000!');
+  console.log('All Database:\n');
+  console.log(fornecedorService.get());
 })
 
 function closeServer(): void {
+  console.log('I hope to see you again! <3');
   server.close();
 }
 

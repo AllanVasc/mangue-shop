@@ -7,75 +7,76 @@
       <div class="g1">
         <div class="input-box">
           <span class="details">Nome</span>
-          <input type="text" placeholder="Insira seu nome" required>
+          <input type="text" name="nome" [(ngModel)]="fornecedor.nome_razao" placeholder="Insira seu nome" required>
         </div>
         <div class="input-box">
           <span class="details">CPF</span>
-          <input type="text" placeholder="Insira seu CPF" required>
+          <input type="text" name="cpf" [(ngModel)]="fornecedor.CPF_CNPJ" placeholder="Insira seu CPF" required>
         </div>
       </div>
       <div class="g2">
         <div class="input-box">
           <span class="details">País</span>
-          <input type="text" placeholder="Insira seu país" required>
+          <input type="text" name="pais" [(ngModel)]="fornecedor.pais" placeholder="Insira seu país" required>
         </div>
         <div class="input-box">
           <span class="details">Estado</span>
-          <input type="text" placeholder="Insira seu estado" required>
+          <input type="text" name="estado" [(ngModel)]="fornecedor.estado" placeholder="Insira seu estado" required>
         </div>
         <div class="input-box">
           <span class="details">Bairro</span>
-          <input type="text" placeholder="Insira seu bairro" required>
+          <input type="text" name="bairro" [(ngModel)]="fornecedor.bairro" placeholder="Insira seu bairro" required>
         </div>
         <div class="input-box">
           <span class="details">Rua</span>
-          <input type="text" placeholder="Insira sua rua" required>
+          <input type="text" name="rua" [(ngModel)]="fornecedor.rua" placeholder="Insira sua rua" required>
         </div>
         <div class="input-box">
           <span class="details">Número</span>
-          <input type="text" placeholder="Insira o número da rua" required>
+          <input type="text" name="numero" [(ngModel)]="fornecedor.numero" placeholder="Insira o número da rua" required>
         </div>
         <div class="input-box">
           <span class="details">Complemento</span>
-          <input type="text" placeholder="Insira o complemento" required>
+          <input type="text" name="complemento" [(ngModel)]="fornecedor.complemento" placeholder="Insira o complemento" required>
         </div>
       </div>
       <div class="g3">
         <div class="input-box">
           <span class="details">Nome de Exibição</span>
-          <input type="text" placeholder="Insira o nome de exibição" required>
+          <input type="text" name="nome_exibicao" [(ngModel)]="fornecedor.nome_exibicao" placeholder="Insira o nome de exibição" required>
         </div>
         <div class="input-box">
           <span class="details">Imagem ou Logo</span>
-          <input type="text" placeholder="Insira a imagem ou logo">
+          <input type="text" name="imagem" [(ngModel)]="fornecedor.imagem" placeholder="Insira a imagem ou logo">
         </div>
       </div>
       <div class="g4">
         <div class="input-box">
           <span class="details">Descrição</span>
-          <textarea rows="6"></textarea>
+          <textarea name="descricao" [(ngModel)]="fornecedor.descricao" rows="6"></textarea>
         </div>
       </div>
       <div class="g5">
         <div class="input-box">
           <span class="details">Email</span>
-          <input type="text" placeholder="Insira o seu email" required>
+          <input type="text" name="email" [(ngModel)]="fornecedor.email" placeholder="Insira o seu email" required>
         </div>
       </div>
       <div class="g6">
         <div class="input-box">
           <span class="details">Senha</span>
-          <input type="text" placeholder="Insira sua senha" required>
+          <input type="password" name="senha" [(ngModel)]="fornecedor.senha" placeholder="Insira sua senha" required>
         </div>
         <div class="input-box">
           <span class="details">Confirmar senha</span>
-          <input type="text" placeholder="Insira sua senha" required>
+          <input type="password" placeholder="Insira sua senha" required>
         </div>
       </div>
       <br>
       <br>
       <div class="button">
-        <input type="submit" value="CONTINUAR" [routerLink]="'/finish-registration'">
+        <!-- <input type="submit" value="CONTINUAR" (click)="registerFornecedor()"> [routerLink]="'/finish-registration'"  >*/ -->
+        <input type="submit" value="CONTINUAR" (click)="registerFornecedor()">
       </div>
     </form>
     <div>
