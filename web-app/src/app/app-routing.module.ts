@@ -9,7 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterPFComponent } from './register-pf/register-pf.component';
 import { RegisterPJComponent } from './register-pj/register-pj.component';
 import { FinishRegistrationComponent } from './finish-registration/finish-registration.component';
-
+import { DespachosComponent } from './despachos/despachos.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,7 +19,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'register-pf', component: RegisterPFComponent},
   {path: 'register-pj', component: RegisterPJComponent},
-  {path: 'finish-registration', component: FinishRegistrationComponent}
+  {path: 'finish-registration', component: FinishRegistrationComponent},
+  {path: 'despachos', component: DespachosComponent}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
