@@ -67,10 +67,10 @@
     font-size: 15px;
 }
 
-textarea{
+.input-box textarea{
     margin-top: 10px;
     margin-bottom: 25px;
-    width: 90%;
+    width: 95%;
     padding-top: 10px;
     padding-left: 10px;
     border-radius: 20px;
