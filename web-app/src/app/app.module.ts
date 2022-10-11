@@ -21,6 +21,7 @@ import { RegisterPFComponent } from './register-pf/register-pf.component';
 import { RegisterPJComponent } from './register-pj/register-pj.component';
 import { FinishRegistrationComponent } from './finish-registration/finish-registration.component';
 import { FornecedorService } from './services/fornecedor.service';
+import { DespachosComponent } from './despachos/despachos.component';
 
 //import { routing } from './app-routing.module';
 
@@ -36,7 +37,8 @@ import { FornecedorService } from './services/fornecedor.service';
     RegisterComponent,
     RegisterPFComponent,
     RegisterPJComponent,
-    FinishRegistrationComponent
+    FinishRegistrationComponent,
+    DespachosComponent
   ],
   imports: [
     BrowserModule,
