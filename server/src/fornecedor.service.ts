@@ -12,10 +12,12 @@ export class FornecedorService{
     }
 
     add(fornecedor: Fornecedor): Fornecedor{
-        if (this.isCPF_CPNJRegistered(fornecedor.CPF_CNPJ) ) return null;
-        if (this.isEmailRegistered(fornecedor.email) ) return null;
-    
+
         var newFornecedor = new Fornecedor(fornecedor);
+        
+        if (this.isCPF_CPNJRegistered(newFornecedor.CPF_CNPJ) ) return null;
+        if (this.isEmailRegistered(newFornecedor.email) ) return null;
+    
         this.fornecedores.add(newFornecedor);
         return newFornecedor;
     }
@@ -42,12 +44,12 @@ export class FornecedorService{
         return this.fornecedores.getData().find(({ email }: any) => email == fornecedorEmail);
     }
 
-    isCPF_CPNJRegistered(cpf_cnpj: string): boolean { // Averiguar melhor
-        return this.fornecedores.getData().find( ({ f }: any) => f.CPF_CNPJ == cpf_cnpj) ? true : false;
+    isCPF_CPNJRegistered(cpf_cnpj: string): boolean {
+        return this.fornecedores.getData().find( (f : Fornecedor) => f.CPF_CNPJ === cpf_cnpj) ? true : false;
     }
 
     isEmailRegistered(email: string): boolean {
-        return this.fornecedores.getData().find( ({ f }: any) => f.email == email) ? true : false;
+        return this.fornecedores.getData().find( ( f : Fornecedor) => f.email == email) ? true : false;
     }
     
     // Autenticação para o Login
