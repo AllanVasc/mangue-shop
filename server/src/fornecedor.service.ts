@@ -46,7 +46,7 @@ export class FornecedorService{
         return this.fornecedores.getData().find(({ id }: any) => id == fornecedorId);
     }
 
-    getByEmail(fornecedorEmail: string) {
+    getByEmail(fornecedorEmail: string) : Fornecedor {
         return this.fornecedores.getData().find(({ email }: any) => email == fornecedorEmail);
     }
 
@@ -61,7 +61,10 @@ export class FornecedorService{
     // Autenticação para o Login
     authenticate(email: string, password: string): boolean {
         var fornecedor = this.getByEmail(email);
-        if(fornecedor && fornecedor.password == password) return true;
+        if(fornecedor && fornecedor.senha == password){
+            console.log("Authenticate: Sucess");
+            return true;
+        }
         return false;
     }
 

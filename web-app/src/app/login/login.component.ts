@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators, 
 } from '@angular/forms';
+import { FornecedorService } from "src/app/services/fornecedor.service";
 
 @Component({
   selector: "login",
@@ -16,14 +17,24 @@ export class LoginComponent implements OnInit {
   errouSenha: boolean = false;
   loginForm: FormGroup;
 
-  constructor() {
+  constructor(private FornecedorService: FornecedorService) {
     this.loginForm = new FormGroup({
       email: new FormControl(),
       password: new FormControl(),
     });
   }
 
-  ngOnInit() {
+  login(): void {
+    this.FornecedorService
+      .login(this.loginForm.value.email, this.loginForm.value.password)
+      .then((result) => {
+        if (!result) {
+          this.errouSenha = true;
+        }
+      })
+      .catch(() => (this.errouSenha = true));
   }
+
+  ngOnInit(): void {}
 
 }

@@ -75,6 +75,26 @@
     border-color: white;
 }
 
+.menu{
+    color: white;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.8vw;
+    display: block;
+    transition: 0.3s;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    background-color: #032539;
+    width: 100%;
+}
+
+.menu:hover{
+    background-color: #001A29; 
+}
+
 .leftnav a:hover{
     background-color: #001A29;
 }

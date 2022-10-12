@@ -49,6 +49,13 @@ input {
     text-align: center;
 }
 
+.msg-erro {
+    color: #ff0000;
+    text-align: center;
+    margin: 0px;
+    height: 19px;
+}
+
 .forgot-password {
     font-family: 'Inter';
     font-style: normal;
@@ -61,13 +68,6 @@ input {
 }
 
 /* 
-
-.msg-erro {
-    color: #ff0000;
-    text-align: center;
-    margin: 0px;
-    height: 19px;
-}
 
 .item {
     display: grid;
