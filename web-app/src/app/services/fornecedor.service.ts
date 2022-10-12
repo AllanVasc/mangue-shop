@@ -1,7 +1,12 @@
+import { JsonPipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { Fornecedor } from '../fornecedor';
+
+declare function require(name:string);
+const Joi = require('@hapi/joi');
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +16,107 @@ export class FornecedorService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private taURL = 'http://localhost:3000';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private router: Router) { }
 
   create(fornecedor: Fornecedor): Promise<Fornecedor> {
     return this.http.post(this.taURL + "/register",JSON.stringify(fornecedor), {headers: this.headers})
       .toPromise()
       .then(res => {
-        if (res.status === 201) {return fornecedor;} else {return null;}
+        if (res.status === 201) {
+          console.log("Cadastro realizado com sucesso!\n");
+          this.router.navigate(['/finish-registration']);
+          return fornecedor;
+        } 
+        else {
+          return null
+        };
       })
       .catch(this.catch);
   }
+
+  validateRegistrationPF(fornecedor: Fornecedor): any{
+
+    const schema = Joi.object({
+        nome_razao: Joi.string().pattern(new RegExp('^[a-zA-Z \']{5,80}$')).required().messages({
+          'string.base': `O campo "Nome" deve ser do tipo 'text'`,
+          'string.empty': `O campo "Nome" não pode ser vazio`,
+          'string.pattern.base': `O campo "Nome" pode ter somente caracteres sem acento do alfabeto e deve ter entre 5 e 80 caracteres`,
+          'any.required': `O campo "Nome" é um campo obrigatório`
+        }),
+        CPF_CNPJ: Joi.string().pattern(new RegExp('^[0-9]{11}$')).required().messages({
+          'string.base': `O campo "CPF" deve ser do tipo 'text'`,
+          'string.empty': `O campo "CPF" não pode ser vazio`,
+          'string.pattern.base': `O campo "CPF" deve ser composto somente por dígitos numéricos correspondentes a um CPF`,
+          'any.required': `O campo "CPF" é um campo obrigatório`
+        }),
+        pais: Joi.string().pattern(new RegExp('^[a-zA-Z \']{2,80}$')).required().messages({
+          'string.base': `O campo "País" deve ser do tipo 'text'`,
+          'string.empty': `O campo "País" não pode ser vazio`,
+          'string.pattern.base': `O campo "País" deve ser composto somente por caracteres sem acento do alfabeto e deve ter entre 2 e 80 caracteres`,
+          'any.required': `O campo "País" é um campo obrigatório`
+        }),
+        estado: Joi.string().pattern(new RegExp('^[a-zA-Z \']{2,80}$')).required().messages({
+          'string.base': `O campo "Estado" deve ser do tipo 'text'`,
+          'string.empty': `O campo "Estado" não pode ser vazio`,
+          'string.pattern.base': `O campo "Estado" deve ser composto somente por caracteres sem acento do alfabeto e deve ter entre 2 e 80 caracteres`,
+          'any.required': `O campo "Estado" é um campo obrigatório`
+        }),
+        bairro: Joi.string().pattern(new RegExp('^[a-zA-Z \']{2,80}$')).required().messages({
+          'string.base': `O campo "Bairro" deve ser do tipo 'text'`,
+          'string.empty': `O campo "Bairro" não pode ser vazio`,
+          'string.pattern.base': `O campo "Bairro" deve ser composto somente por caracteres sem acento do alfabeto e deve ter entre 2 e 80 caracteres`,
+          'any.required': `O campo "Bairro" é um campo obrigatório`
+        }),
+        rua: Joi.string().pattern(new RegExp('^[a-zA-Z0-9 \']{2,80}$')).required().messages({
+          'string.base': `O campo "Rua" deve ser do tipo 'text'`,
+          'string.empty': `O campo "Rua" não pode ser vazio`,
+          'string.pattern.base': `O campo "Rua" deve ser composto somente por números e caracteres sem acento do alfabeto e deve ter entre 2 e 80 caracteres`,
+          'any.required': `O campo "Rua" é um campo obrigatório`
+        }),
+        numero: Joi.string().pattern(new RegExp('^[0-9]{1,7}$')).messages({
+          'string.base': `O campo "Número" deve ser do tipo 'text'`,
+          'string.pattern.base': `O campo "Número" deve ser composto somente por dígitos numéricos e deve ter entre 1 e 7 dígitos`
+        }),
+        complemento: Joi.string().pattern(new RegExp('^[a-zA-Z0-9 \']{2,80}$')).messages({
+          'string.base': `O campo "Complemento" deve ser do tipo 'text'`,
+          'string.pattern.base': `O campo "Complemento" deve ser composto somente por números e caracteres sem acento do alfabeto e deve ter entre 2 e 80 caracteres`
+        }),
+        nome_exibicao: Joi.string().pattern(new RegExp('^[a-zA-Z0-9 \']{3,40}$')).required().messages({
+          'string.base': `O campo "Nome Exibição" deve ser do tipo 'text'`,
+          'string.empty': `O campo "Nome Exibição" não pode ser vazio`,
+          'string.pattern.base': `O campo "Nome Exibição" deve ser composto somente por números e caracteres sem acento do alfabeto e deve ter entre 3 e 40 caracteres`,
+          'any.required': `O campo "Nome Exibição" é um campo obrigatório`
+        }),
+        descricao: Joi.string().min(10).max(400).required().messages({
+          'string.base': `O campo "Descrição" deve ser do tipo 'text'`,
+          'string.min': `O campo "Descrição" deve ter pelo menos 10 caracteres`,
+          'string.max': `O campo "Descrição" não pode ter mais do que 400 caracteres`,
+          'any.required': `O campo "Descrição" é um campo obrigatório`
+        }),
+        imagem: Joi.string(),
+        email: Joi.string().pattern(new RegExp('^[a-zA-Z0-9\-\.+! \']{3,40}@[a-zA-Z0-9\-\.+!\\\n \']{3,40}.[a-zA-Z0-9\-\.+! \']{3,40}$')).required().messages({
+          'string.base': `O campo "Email" deve ser do tipo 'text'`,
+          'string.empty': `O campo "Email" não pode ser vazio`,
+          'string.pattern.base': `O campo "Email" deve ter o formato de um email válido`,
+          'any.required': `O campo "Email" é um campo obrigatório`
+        }),
+        senha: Joi.string().min(8).max(100).required().messages({
+          'string.base': `O campo "Senha" deve ser do tipo 'text'`,
+          'string.min': `O campo "Senha" deve ter pelo menos 8 caracteres`,
+          'string.max': `O campo "Senha" não pode ter mais do que 100 caracteres`,
+          'any.required': `O campo "Senha" é um campo obrigatório`
+        }),
+        confirmar_senha: Joi.any().equal(Joi.ref('senha')).required().messages({
+          'string.base': `O campo "Confirmar senha" deve ser do tipo 'text'`,
+          'any.only': `O campo "Confirmar senha" deve ter uma senha igual a do campo "Senha"`,
+          'any.required': `O campo "Confirmar senha" é um campo obrigatório`
+        }),
+        tipo: Joi.string().pattern(new RegExp('^PF$'))
+    });
+
+
+    return schema.validate(fornecedor);
+}
 
   private catch(erro: any): Promise<any>{
     console.error('Oops, something went wrong',erro);

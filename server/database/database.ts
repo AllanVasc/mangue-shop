@@ -30,7 +30,6 @@ export class DBService {
     }
 
     add(data: any) {
-        console.log("this.name: " + this.name);
         this.data[this.name].push(data);
         this.write();
     }
