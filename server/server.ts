@@ -12,13 +12,11 @@ var allowCrossDomain = function(req: any, res: any, next: any) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 }
-app.use(allowCrossDomain);
 
+app.use(allowCrossDomain);
 app.use(bodyParser.json());
 
 var fornecedorService: FornecedorService = new FornecedorService();
-var fornecedorFileName = './database/fornecedor.json';
-
 
 app.post('/register', async function(req: express.Request, res: express.Response){
   const fornecedor: Fornecedor = <Fornecedor> req.body;
@@ -36,15 +34,18 @@ app.post('/register', async function(req: express.Request, res: express.Response
   }
 });
 
-
-// Autenticação do Login (Ajeitar Rota)
+// Autenticação do Login
 app.post('/login', function(req, res) {
   const email = req.body.email;
   const password = req.body.password;
   try {
     const result = fornecedorService.authenticate(email, password);
     if (result) {
-      res.status(201).send({ message: "Authenticated!"});
+      const usuario = fornecedorService.getByEmail(email);
+      // Send ID to set in LocalStorage
+      // console.log("token = ");
+      // console.log(usuario.id);
+      res.status(201).send({ message: "Authenticated!", token: usuario.id});
     }
     else{
       res.status(403).send({ message: "Authentication error!"});

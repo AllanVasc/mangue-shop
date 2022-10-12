@@ -38,11 +38,11 @@ export class FornecedorService{
         return this.fornecedores.getData().find(({ id }: any) => id == fornecedorId);
     }
 
-    getByEmail(fornecedorEmail: string) {
+    getByEmail(fornecedorEmail: string) : Fornecedor {
         return this.fornecedores.getData().find(({ email }: any) => email == fornecedorEmail);
     }
 
-    isCPF_CPNJRegistered(cpf_cnpj: string): boolean { // Averiguar melhor
+    isCPF_CPNJRegistered(cpf_cnpj: string): boolean {
         return this.fornecedores.getData().find( ({ f }: any) => f.CPF_CNPJ == cpf_cnpj) ? true : false;
     }
 
@@ -53,7 +53,10 @@ export class FornecedorService{
     // Autenticação para o Login
     authenticate(email: string, password: string): boolean {
         var fornecedor = this.getByEmail(email);
-        if(fornecedor && fornecedor.password == password) return true;
+        if(fornecedor && fornecedor.senha == password){
+            console.log("Authenticate: Sucess");
+            return true;
+        }
         return false;
     }
 }
