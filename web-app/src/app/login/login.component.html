@@ -28,6 +28,7 @@
     <button
         class="button-medium"
         type="submit"
+        (click)="login()"
         [disabled]="!loginForm.valid"
       >
       Entrar
@@ -37,6 +38,10 @@
       <a routerLink="../forgot-password/" href="#" name="forgot-password">
         Esqueceu a senha?
       </a>
+    </div>
+
+    <div class="msg-erro">
+      <span *ngIf="errouSenha">Dados incorretos!</span>
     </div>
 
   </div>
