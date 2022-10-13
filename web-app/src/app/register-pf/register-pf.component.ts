@@ -14,6 +14,8 @@ export class RegisterPFComponent implements OnInit {
 
   private fornecedor: Fornecedor;
   private fornecedorService: FornecedorService;
+  private error: boolean;
+  private errorMessage: string;
 
 
   constructor(_fornecedorService: FornecedorService) {
@@ -22,12 +24,34 @@ export class RegisterPFComponent implements OnInit {
 
   ngOnInit() {
     this.fornecedor = new Fornecedor();
+    this.error = false;
+    this.errorMessage = "";
   }
 
-  registerFornecedor(){
-    debugger;
-    var ret = this.fornecedorService.create(this.fornecedor);
-    console.log(ret);
+  registerFornecedorPF(){
+    this.fornecedor.tipo = "PF";
+    var val = this.fornecedorService.validateRegistrationPF(this.fornecedor);
+
+    if(val['error']){
+      this.error = true;
+      this.errorMessage = val['error'];
+      return;
+    }
+
+    this.fornecedorService.create(this.fornecedor)
+    .then( (result) => {
+        if(result === "Sucesso"){
+          console.log("Deu bom!\n");
+        }
+        else{
+          this.error = true;
+          this.errorMessage = result;
+          alert("Houve um erro no seu cadastro: " + result);
+        }
+    })
+    .catch( (err) => {
+        console.log("Deu o seguinte err: " + err);
+    });
   }
 
 }

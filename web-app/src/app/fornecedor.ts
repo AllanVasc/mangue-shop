@@ -12,6 +12,7 @@ export class Fornecedor{
     descricao: string;
     email: string;
     senha: string;
+    confirmar_senha: string;
     tipo: string;
 
     constructor(){}

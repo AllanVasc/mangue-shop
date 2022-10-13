@@ -21,11 +21,11 @@ var fornecedorService: FornecedorService = new FornecedorService();
 app.post('/register', async function(req: express.Request, res: express.Response){
   const fornecedor: Fornecedor = <Fornecedor> req.body;
   try {
-    const result = fornecedorService.add(fornecedor);
-    if (result) {
+    var result = fornecedorService.add(fornecedor);
+    if (result === "Sucesso") {
       res.status(201).send(result);
     } else {
-      res.status(403).send({ message: "Nao foi possivel adicionar o fornecedor"});
+      res.status(403).send({ message: result});
     }
   } catch (err) {
     const {message} = err;

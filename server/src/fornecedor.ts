@@ -33,18 +33,4 @@ export class Fornecedor{
         this.tipo = fornecedor.tipo;
     }
 
-    update(fornecedor: Fornecedor): void{
-        this.pais = fornecedor.pais;
-        this.estado = fornecedor.estado;
-        this.bairro = fornecedor.bairro;
-        this.rua = fornecedor.rua;
-        this.numero = fornecedor.numero;
-        this.complemento = fornecedor.complemento;
-        this.nome_exibicao = fornecedor.nome_exibicao;
-        this.imagem = fornecedor.imagem;
-        this.descricao = fornecedor.descricao;
-        this.email = fornecedor.email;
-        this.senha = fornecedor.senha;
-        this.tipo = fornecedor.tipo;
-    }
 }

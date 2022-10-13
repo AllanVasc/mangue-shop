@@ -9,6 +9,7 @@
     margin: 0;
     height: 98vh;
     width: 98vw;
+    margin-bottom: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,12 +39,6 @@
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-
-.g1 .input-box{
-    width: 90%;
-    height: 70px;
-}
-
 .g2 .input-box{
     width: 90%;
     height: 70px;
@@ -67,10 +62,10 @@
     font-size: 15px;
 }
 
-textarea{
+.input-box textarea{
     margin-top: 10px;
     margin-bottom: 25px;
-    width: 90%;
+    width: 95%;
     padding-top: 10px;
     padding-left: 10px;
     border-radius: 20px;
@@ -97,4 +92,10 @@ textarea{
     border-radius: 50px;
     font-size: 15px;
     font-family: 'Inter';
+}
+
+.errorMsg p{
+    text-align: left;
+    color:#FA991C;
+    margin-bottom: 30px;
 }

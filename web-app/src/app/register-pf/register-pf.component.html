@@ -2,6 +2,9 @@
   <div class="logo-container">
     <img class="logo" src="assets/images/mangueshop-logo.png"/>
   </div>
+  <div class="errorMsg">
+    <p *ngIf="this.error">{{this.errorMessage}} </p>
+  </div>
   <div class="container">
     <form>
       <div class="g1">
@@ -11,7 +14,7 @@
         </div>
         <div class="input-box">
           <span class="details">CPF</span>
-          <input type="text" name="cpf" [(ngModel)]="fornecedor.CPF_CNPJ" placeholder="Insira seu CPF" required>
+          <input type="text" name="cpf" [(ngModel)]="fornecedor.CPF_CNPJ" placeholder="Insira os dígitos do seu CPF" required>
         </div>
       </div>
       <div class="g2">
@@ -69,14 +72,14 @@
         </div>
         <div class="input-box">
           <span class="details">Confirmar senha</span>
-          <input type="password" placeholder="Insira sua senha" required>
+          <input type="password" name="confirmar_senha" [(ngModel)]="fornecedor.confirmar_senha" placeholder="Confirme sua senha" required>
         </div>
       </div>
       <br>
       <br>
       <div class="button">
         <!-- <input type="submit" value="CONTINUAR" (click)="registerFornecedor()"> [routerLink]="'/finish-registration'"  >*/ -->
-        <input type="submit" value="CONTINUAR" (click)="registerFornecedor()">
+        <input type="submit" value="CONTINUAR" (click)="registerFornecedorPF()">
       </div>
     </form>
     <div>
