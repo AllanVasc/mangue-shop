@@ -37,12 +37,12 @@
 }
 
 .topnav .circle{
-    margin-top: 2vh;
-    margin-right: 2vw;
+    margin-top: 3.5vh;
+    margin-right: 2.5vw;
     float: right;
     border-radius: 70%;
-    width: 10vh;
-    height: 6vw; 
+    width: 8vh;
+    height: auto; 
     background: white;
 }
 
@@ -55,7 +55,7 @@
 
 .leftnav{
     position: absolute;
-    width: 25%;
+    width: 18%;
     height: 100%;
     background: #032539;
     top: 17vh;
@@ -67,7 +67,7 @@
     padding-bottom: 5%;
     text-align: center;
     text-decoration: none;
-    font-size: 1.8vw;
+    font-size: 20px;
     display: block;
     transition: 0.3s;
     border-style: solid;
@@ -81,7 +81,7 @@
     padding-bottom: 5%;
     text-align: center;
     text-decoration: none;
-    font-size: 1.8vw;
+    font-size: 20px;
     display: block;
     transition: 0.3s;
     border-style: solid;

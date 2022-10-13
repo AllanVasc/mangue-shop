@@ -57,6 +57,24 @@ app.post('/login', function(req, res) {
   }
 });
 
+app.get('/fornecedor/:id', function(req, res){
+  const id = req.params.id;
+  console.log(id);
+  try{
+    const fornecedor = fornecedorService.getById(id);
+    if(fornecedor){
+      console.log("encontrei o fornecedor")
+      res.status(200).send(fornecedor);
+    } else {
+      res.status(404).send({message: "Fornecedor nao encontrado"});
+    }
+  } catch (err) {
+    const { message } = err;
+    res.status(400).send({message})
+  }
+
+});
+
 var server = app.listen(3000, function () {
   console.log('Server listening on port 3000!');
   console.log('All Database:\n');
