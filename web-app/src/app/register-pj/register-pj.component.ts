@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Http} from '@angular/http';
+import { Fornecedor } from '../fornecedor';
+import { FornecedorService } from '../services/fornecedor.service';
+
+
 @Component({
   selector: 'app-register-pj',
   templateUrl: './register-pj.component.html',
@@ -7,9 +12,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterPJComponent implements OnInit {
 
-  constructor() { }
+  private fornecedor: Fornecedor;
+  private fornecedorService: FornecedorService;
+  private error: boolean;
+  private errorMessage: string;
+
+
+  constructor(_fornecedorService: FornecedorService) {
+    this.fornecedorService = _fornecedorService;
+  }
 
   ngOnInit() {
+    this.fornecedor = new Fornecedor();
+    this.error = false;
+    this.errorMessage = "";
+  }
+
+  registerFornecedorPJ(){
+    this.fornecedor.tipo = "PJ";
+    var val = this.fornecedorService.validateRegistrationPJ(this.fornecedor);
+
+    if(val['error']){
+      this.error = true;
+      this.errorMessage = val['error'];
+      return;
+    }
+
+    this.fornecedorService.create(this.fornecedor)
+    .then( (result) => {
+        if(result === "Sucesso"){
+          console.log("Deu bom!\n");
+        }
+        else{
+          this.error = true;
+          this.errorMessage = result;
+          alert("Houve um erro no seu cadastro: " + result);
+        }
+    })
+    .catch( (err) => {
+        console.log("Deu o seguinte err: " + err);
+    });
   }
 
 }

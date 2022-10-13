@@ -30,22 +30,23 @@ export class RegisterPFComponent implements OnInit {
 
   registerFornecedorPF(){
     this.fornecedor.tipo = "PF";
-    var teste = this.fornecedorService.validateRegistrationPF(this.fornecedor);
+    var val = this.fornecedorService.validateRegistrationPF(this.fornecedor);
 
-    if(teste['error']){
-      alert(teste['error']);
+    if(val['error']){
       this.error = true;
-      this.errorMessage = teste['error'];
+      this.errorMessage = val['error'];
+      return;
     }
-    else{
-      alert("Parabens, vc conseguiu!");
-    }
-    return;
 
     this.fornecedorService.create(this.fornecedor)
     .then( (result) => {
-        if(result){
-          console.log("Deu bom!\n")
+        if(result === "Sucesso"){
+          console.log("Deu bom!\n");
+        }
+        else{
+          this.error = true;
+          this.errorMessage = result;
+          alert("Houve um erro no seu cadastro: " + result);
         }
     })
     .catch( (err) => {

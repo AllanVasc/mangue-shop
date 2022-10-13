@@ -11,6 +11,14 @@ export class DBService {
         this.read();
     }
 
+    getIdCount() {
+        var count = 0;
+        for(let i of this.data[this.name]) {
+            count = count + 1;
+        }
+        return count;
+    }
+
     read() {
         this.data = JSON.parse(
             fs.readFileSync(this.path, "utf8", (err: any) => {
