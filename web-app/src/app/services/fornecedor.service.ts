@@ -15,18 +15,42 @@ const Joi = require('@hapi/joi');
 export class FornecedorService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private taURL = 'http://localhost:3000';
-
-  constructor(private http: Http, private router: Router) {}
   // ID to know who is the user
   private id: number = JSON.parse(localStorage.getItem('id') || '-1');
-  
   private isLoggedIn = new BehaviorSubject(
     JSON.parse(localStorage.getItem('loggedIn') || 'false')
   );
+  private fornecedor: Fornecedor = new Fornecedor();
   isLoggedIn$ = this.isLoggedIn.asObservable();
 
+
+  constructor(private http: Http, private router: Router) {}
+
+  
   getId(){
     return JSON.parse(localStorage.getItem('id') || '-1');
+  }
+
+  getById(id: number): Promise<Fornecedor>{
+    return this.http.get(this.taURL + '/fornecedor/' + String(id), {headers: this.headers})
+    .toPromise()
+    .then( (res) =>{
+      if (res.status === 200){
+        console.log(res.json().fornecedor)
+        this.fornecedor = res.json().fornecedor;
+        return res.json();
+      } else{
+        console.log("oi")
+        return null;
+      }
+    })
+    .catch(this.catch);
+
+  }
+
+  getFornecedor(){
+    var fornecedor = this.getById(this.getId());
+    return fornecedor;
   }
 
   getIsLoggedIn(){
