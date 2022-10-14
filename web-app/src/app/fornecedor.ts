@@ -14,6 +14,8 @@ export class Fornecedor{
     senha: string;
     confirmar_senha: string;
     tipo: string;
+    despachar: Array<string>;
+    num_despachar: number;
 
     constructor(){}
 }

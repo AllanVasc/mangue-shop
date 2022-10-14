@@ -54,7 +54,9 @@ export class FornecedorService{
             descricao: fornecedorRecebido['descricao'],
             email: fornecedorRecebido['email'],
             senha: fornecedorRecebido['senha'],
-            tipo: fornecedorRecebido['tipo']
+            tipo: fornecedorRecebido['tipo'],
+            despachar: ['ABC123',"JP115"],
+            num_despachar: 2
         });
 
         this.fornecedores.add(newFornecedor);

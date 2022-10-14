@@ -2,7 +2,7 @@
   <img src="assets/images/logo-no-title.png">
   <h4>Despacho de Pedidos</h4>
   <img class="circle" src="assets/images/User.png">
-  <h4 class="right">Heinz</h4>
+  <h4 class="right">{{fornecedor.nome_razao}}</h4>
   <img class="bell" src="assets/images/bell.png">
 </div>
 <div class="rectangle">
@@ -30,6 +30,6 @@
   <a class="dispatch"> Despachar</a>
   <a class="transit"> Em Trânsito</a>
     <div class="block1">0</div>
-    <div class="block2">1</div>
+    <div class="block2">{{fornecedor.num_despachar}}</div>
     <div class="block3">2</div>
 </div>
