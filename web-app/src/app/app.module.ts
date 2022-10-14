@@ -21,6 +21,7 @@ import { FinishRegistrationComponent } from './finish-registration/finish-regist
 import { FornecedorService } from './services/fornecedor.service';
 import { DespachosComponent } from './despachos/despachos.component';
 import { AccountComponent } from './account/account.component';
+import { UpdateAccountComponent } from './update-account/update-account.component';
 
 //import { routing } from './app-routing.module';
 
@@ -36,7 +37,8 @@ import { AccountComponent } from './account/account.component';
     RegisterPJComponent,
     FinishRegistrationComponent,
     DespachosComponent,
-    AccountComponent
+    AccountComponent,
+    UpdateAccountComponent
   ],
   imports: [
     BrowserModule,
