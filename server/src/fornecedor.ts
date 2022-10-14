@@ -14,6 +14,9 @@ export class Fornecedor{
     email: string;
     senha: string;
     tipo: string;
+    despachar: Array<string>;
+    num_despachar: number;
+
 
     constructor(fornecedor: Fornecedor){
         this.id = fornecedor.id;
@@ -31,6 +34,8 @@ export class Fornecedor{
         this.email = fornecedor.email;
         this.senha = fornecedor.senha;
         this.tipo = fornecedor.tipo;
+        this.despachar = fornecedor.despachar;
+        this.num_despachar = fornecedor.despachar.length; 
     }
 
 }
