@@ -7,7 +7,6 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 
 import { Fornecedor } from './fornecedor';
 
@@ -21,13 +20,13 @@ import { RegisterPJComponent } from './register-pj/register-pj.component';
 import { FinishRegistrationComponent } from './finish-registration/finish-registration.component';
 import { FornecedorService } from './services/fornecedor.service';
 import { DespachosComponent } from './despachos/despachos.component';
+import { AccountComponent } from './account/account.component';
 
 //import { routing } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     HomeComponent,
     DashboardComponent,
     LoginComponent,
@@ -36,7 +35,8 @@ import { DespachosComponent } from './despachos/despachos.component';
     RegisterPFComponent,
     RegisterPJComponent,
     FinishRegistrationComponent,
-    DespachosComponent
+    DespachosComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
