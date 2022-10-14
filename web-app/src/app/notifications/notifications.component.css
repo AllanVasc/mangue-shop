@@ -53,12 +53,36 @@
     display: block;
 }
 
-
-
 .rectangle{
     width: 100vw;
     height: 116vh;
     background: #FBF3F2;
 }
 
+.rectangle .flex-container{
+	background-color: #1c768fa9;
+	position: relative;
+	top:15%;
+	left: 25%;
+	height: 50%;
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 15px;
+}
+
+.notification{
+	width: 80%;
+	height: 10%;
+	display: flex;
+	background-color: #032539;
+	color: white;
+	/* border: 2px solid red; */
+	justify-content: center;
+	align-items: center;
+	border-radius: 30px;
+	margin: 3%;
+}
 
