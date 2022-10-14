@@ -42,7 +42,7 @@
     float: right;
     border-radius: 70%;
     width: 8vh;
-    height: auto; 
+    height: auto;
     background: white;
 }
 
@@ -51,6 +51,8 @@
     margin-right: 1vw;
     float: right;
     display: block;
+	background: #1a687e;
+	border:none;
 }
 
 .leftnav{
@@ -92,7 +94,7 @@
 }
 
 .menu:hover{
-    background-color: #001A29; 
+    background-color: #001A29;
 }
 .leftnav a:hover{
     background-color: #001A29;
@@ -253,7 +255,7 @@
     font-size: 1vw;
     line-height: 29px;
     text-align: center;
-    
+
 
     color: #FFFFFF;
 }
@@ -274,7 +276,7 @@
     text-align: center;
 
     color: #FFFFFF;
-    
+
 }
 
 .block3{
