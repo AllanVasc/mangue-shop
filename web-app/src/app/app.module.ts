@@ -22,6 +22,7 @@ import { FornecedorService } from './services/fornecedor.service';
 import { DespachosComponent } from './despachos/despachos.component';
 import { AccountComponent } from './account/account.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 //import { routing } from './app-routing.module';
 
@@ -38,7 +39,8 @@ import { UpdateAccountComponent } from './update-account/update-account.componen
     FinishRegistrationComponent,
     DespachosComponent,
     AccountComponent,
-    UpdateAccountComponent
+    UpdateAccountComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
