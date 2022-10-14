@@ -27,7 +27,12 @@ export class UpdateAccountComponent implements OnInit {
   }
 
   updateFornecedor(){
-    var val = this.fornecedorService.validateRegistrationPF(this.fornecedor);
+    if(this.fornecedor['tipo'] === 'PF'){
+      var val = this.fornecedorService.validateRegistrationPF(this.fornecedor);
+    }
+    else{
+      var val = this.fornecedorService.validateRegistrationPJ(this.fornecedor);
+    }
 
     if(val['error']){
       this.error = true;
@@ -35,10 +40,14 @@ export class UpdateAccountComponent implements OnInit {
       return;
     }
 
-    this.fornecedorService.create(this.fornecedor)
+    this.error = false;
+    this.errorMessage = "";
+
+    this.fornecedorService.update(this.fornecedor)
     .then( (result) => {
         if(result === "Sucesso"){
-          console.log("Deu bom!\n");
+          alert("Seus dados foram atualizados com sucesso!")
+          window.location.reload();
         }
         else{
           this.error = true;
@@ -47,7 +56,7 @@ export class UpdateAccountComponent implements OnInit {
         }
     })
     .catch( (err) => {
-        console.log("Deu o seguinte err: " + err);
+        alert("Deu o seguinte erro: " + err);
     });
   }
 
