@@ -14,6 +14,7 @@ import { FinishRegistrationComponent } from './finish-registration/finish-regist
 import { DespachosComponent } from './despachos/despachos.component';
 import { AccountComponent } from './account/account.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],         //If isLoggedIn == true
   },
   {
+	path: 'notifications',
+    component: NotificationsComponent,
+    canActivate: [AuthGuard],         //If isLoggedIn == true
+  },
+  {
     path: 'account',
     component: AccountComponent,
     canActivate: [AuthGuard]
@@ -51,7 +57,8 @@ const routes: Routes = [
   {path: 'register-pf', component: RegisterPFComponent},
   {path: 'register-pj', component: RegisterPJComponent},
   {path: 'finish-registration', component: FinishRegistrationComponent},
-  {path: 'despachos', component: DespachosComponent}
+  {path: 'despachos', component: DespachosComponent},
+  {path: 'notifications', component: NotificationsComponent}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

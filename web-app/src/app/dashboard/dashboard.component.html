@@ -3,7 +3,9 @@
   <h4>Página Inicial</h4>
   <img class="circle" src="assets/images/User.png">
   <h4 class="right">{{fornecedor.nome_razao}}</h4>
-  <img class="bell" src="assets/images/bell.png">
+  <button class="bell" [routerLink]="'/notifications'">
+	<img src="assets/images/bell.png">
+  </button>
 </div>
 <div class="rectangle">
   <h2 class="title">Bem-vindo, {{fornecedor.nome_razao}}!</h2>
