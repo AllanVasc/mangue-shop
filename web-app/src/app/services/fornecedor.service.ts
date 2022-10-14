@@ -85,6 +85,29 @@ export class FornecedorService {
       });
   }
 
+  update(fornecedor: Fornecedor): Promise<any>{
+    console.log("Vou mandar!!!!!!\n");
+    var id = this.getId()
+    return this.http.put(this.taURL + "/fornecedor",JSON.stringify(fornecedor), {headers: this.headers})
+      .toPromise()
+      .then(res => {
+        console.log("THEN!!!!!!\n");
+        console.log(res);
+        if (res.status === 201) {
+          return "Sucesso";
+        } 
+        else {
+          return res.text;
+        };
+      })
+      .catch( res => {
+        console.log("CATCH!!!!!!\n");
+        var message = JSON.parse(res['_body'])['message'];
+        if(message) return message;
+        else return "Houve um erro não esperado no seu cadastro"
+      });
+  }
+
   validateRegistrationPF(fornecedor: Fornecedor): any{
 
     const schema = Joi.object({
@@ -145,6 +168,7 @@ export class FornecedorService {
           'any.required': `O campo "Descrição" é um campo obrigatório`
         }),
         imagem: Joi.string().allow(null, ''),
+        id: Joi.number().allow(null, ''),
         email: Joi.string().pattern(new RegExp('^[a-zA-Z0-9\-\.+! \']{3,40}@[a-zA-Z0-9\-\.+!\\\n \']{3,40}.[a-zA-Z0-9\-\.+! \']{3,40}$')).required().messages({
           'string.base': `O campo "Email" deve ser do tipo 'text'`,
           'string.empty': `O campo "Email" não pode ser vazio`,
@@ -228,6 +252,7 @@ export class FornecedorService {
           'any.required': `O campo "Descrição" é um campo obrigatório`
         }),
         imagem: Joi.string().allow(null, ''),
+        id: Joi.number().allow(null, ''),
         email: Joi.string().pattern(new RegExp('^[a-zA-Z0-9\-\.+! \']{3,40}@[a-zA-Z0-9\-\.+!\\\n \']{3,40}.[a-zA-Z0-9\-\.+! \']{3,40}$')).required().messages({
           'string.base': `O campo "Email" deve ser do tipo 'text'`,
           'string.empty': `O campo "Email" não pode ser vazio`,

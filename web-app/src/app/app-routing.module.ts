@@ -12,6 +12,8 @@ import { RegisterPFComponent } from './register-pf/register-pf.component';
 import { RegisterPJComponent } from './register-pj/register-pj.component';
 import { FinishRegistrationComponent } from './finish-registration/finish-registration.component';
 import { DespachosComponent } from './despachos/despachos.component';
+import { AccountComponent } from './account/account.component';
+import { UpdateAccountComponent } from './update-account/update-account.component';
 
 const routes: Routes = [
   {
@@ -34,7 +36,16 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],         //If isLoggedIn == true
   },
-  
+  {
+    path: 'account',
+    component: AccountComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'update-account',
+    component: UpdateAccountComponent,
+    canActivate: [AuthGuard]
+  },
   // Completar os outros
   {path: 'register', component: RegisterComponent},
   {path: 'register-pf', component: RegisterPFComponent},

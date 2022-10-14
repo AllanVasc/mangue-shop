@@ -1,0 +1,56 @@
+<div class="main">
+  <div class="topnav">
+    <div class="left-aligned">
+      <img src="assets/images/cropped-crab.png">
+      <h4>Página Inicial</h4>
+    </div>
+    <div class="profile">
+      <img class="bell" src="assets/images/bell.png">
+      <h4>{{fornecedor.nome_exibicao}}</h4>
+      <img class="circle" src="assets/images/User.png">
+    </div>
+  </div>
+  <div class="below-topnav">
+    <div class="leftnav">
+      <button [routerLink]="'/dashboard'">Dashboard</button>
+      <button [routerLink]="'/despachos'">Despachos</button>
+      <button [routerLink]="'/account'">Minha conta</button>
+      <button>Financeiro</button>
+      <button>Produtos</button>
+    </div>
+    <div class="container">
+      <div class="content">
+        <div class="main-title">
+          <h1>{{fornecedor.nome_exibicao}}</h1>
+        </div>
+        <div class="content-item">
+          <h2>Descrição da loja</h2>
+          <p>{{fornecedor.descricao}}</p>
+        </div>
+        <div class="content-item">
+          <h2>Endereço</h2>
+          <p>Pais: {{fornecedor.pais}}</p>
+          <p>Estado: {{fornecedor.estado}}</p>
+          <p>Bairro: {{fornecedor.bairro}}</p>
+          <p>Rua: {{fornecedor.rua}}</p>
+          <p>Número: {{fornecedor.numero}}</p>
+          <p>Complemento: {{fornecedor.complemento}}</p>
+        </div>
+        <div class="content-item">
+          <h2>Meus dados</h2>
+          <p *ngIf="fornecedor.tipo=='PF'">Nome: {{fornecedor.nome_razao}}</p>
+          <p *ngIf="fornecedor.tipo=='PF'">CPF: {{fornecedor.CPF_CNPJ}}</p>
+          <p *ngIf="fornecedor.tipo=='PJ'">Nome: {{fornecedor.nome_razao}}</p>
+          <p *ngIf="fornecedor.tipo=='PJ'">Nome: {{fornecedor.CPF_CNPJ}}</p>
+          <p>Estado: {{fornecedor.estado}}</p>
+          <p>Nome de exibição: {{fornecedor.nome_exibicao}}</p>
+          <p>Email: {{fornecedor.email}}</p>
+        </div>
+        <div class="buttons">
+          <button [routerLink]="'/update-account'" id="update">ATUALIZAR DADOS</button>
+          <button [routerLink]="'/delete-account'" id="delete">EXCLUIR CONTA</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

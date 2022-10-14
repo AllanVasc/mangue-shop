@@ -66,14 +66,53 @@ export class FornecedorService{
         return "Sucesso";
     }
 
-    update(fornecedor: Fornecedor): Fornecedor {
+    update(fornecedor: any): string {
         var data = this.fornecedores.getData().find(({ id }: any) => id == fornecedor.id);
-        if (data){
-            var index = this.fornecedores.getData().indexOf(data);
-            this.fornecedores.update(index, fornecedor);
-            return fornecedor;
+
+        delete fornecedor.id;
+
+        if(fornecedor.email !== data.email){
+          if (this.isEmailRegistered(fornecedor['email']) ) return "O email inserido não pode ser cadastrado pois já existe no banco de dados";
         }
-        return null;
+
+        if(fornecedor['tipo']==='PF'){
+            var val = this.validateRegistrationPF(fornecedor);      
+            if(val['error']){
+                return "Houve o seguinte erro de validação no servidor: " + val['error'];
+            }      
+        }
+        else if(fornecedor['tipo']==='PJ'){
+            var val = this.validateRegistrationPJ(fornecedor);      
+            if(val['error']){
+                return "Houve o seguinte erro de validação no servidor: " + val['error'];
+            }               
+        }
+        else{
+            return "Houve um erro de validação na sua requisição";
+        }
+
+        console.log("Fornecedor recebido foi validado!\n");
+
+        if (data){
+            var fornecedorUpdate = new Fornecedor(data);
+            fornecedorUpdate.pais = fornecedor.pais;
+            fornecedorUpdate.estado = fornecedor.estado;
+            fornecedorUpdate.bairro = fornecedor.bairro;
+            fornecedorUpdate.rua = fornecedor.rua;
+            fornecedorUpdate.numero = fornecedor.numero;
+            fornecedorUpdate.complemento = fornecedor.complemento;
+            fornecedorUpdate.nome_exibicao = fornecedor.nome_exibicao;
+            fornecedorUpdate.imagem = fornecedor.imagem;
+            fornecedorUpdate.descricao = fornecedor.descricao;
+            fornecedorUpdate.senha = fornecedor.senha;
+            fornecedorUpdate.email = fornecedor.email;
+
+            var index = this.fornecedores.getData().indexOf(data);
+            this.fornecedores.update(index, fornecedorUpdate);
+            console.log("Fornecedor atualizado com sucesso\n");
+            return "Sucesso";
+        }
+        return "Houve um erro não esperado";
     }
 
     get() : Fornecedor[] {

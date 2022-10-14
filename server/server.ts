@@ -59,16 +59,32 @@ app.post('/login', function(req, res) {
 
 app.get('/fornecedor/:id', function(req, res){
   const id = req.params.id;
-  console.log(id);
   try{
     const fornecedor = fornecedorService.getById(id);
     if(fornecedor){
-      console.log("encontrei o fornecedor")
       res.status(200).send(fornecedor);
     } else {
       res.status(404).send({message: "Fornecedor nao encontrado"});
     }
   } catch (err) {
+    const { message } = err;
+    res.status(400).send({message})
+  }
+
+});
+
+app.put('/fornecedor', function(req, res){
+  const id = req.params.id;
+  const fornecedorAtt = req.body;
+  try{
+    var result = fornecedorService.update(fornecedorAtt)
+    if( result === "Sucesso"){
+      res.status(201).send(result)
+    }
+    else{
+      res.status(403).send(result);
+    }
+  } catch (err){
     const { message } = err;
     res.status(400).send({message})
   }
