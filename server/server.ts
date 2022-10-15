@@ -140,7 +140,7 @@ app.delete('/fornecedor/:id', function(req, res){
     if(result === "Sucesso"){
       res.status(200).send(result);
     } else {
-      res.status(404).send(result);
+      res.status(403).send(result);
     }
   } catch (err) {
     const { message } = err;

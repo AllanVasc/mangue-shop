@@ -37,6 +37,7 @@ export class ConfirmDeleteComponent implements OnInit {
         this.fornecedorService.logOut();
       }
       else{
+        console.log(result);
         alert("Houve um erro na sua requisição: " + result);
       }
     })

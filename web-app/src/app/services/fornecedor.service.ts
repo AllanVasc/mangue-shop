@@ -130,11 +130,11 @@ export class FornecedorService {
         return "Sucesso";
       }
       else{
-        return res.text;
+        return String(res['_body']);
       }
     })
     .catch( res => {
-      var message = JSON.parse(res['_body'])['message'];
+      var message = String(res['_body']);
       if(message) return message;
       else return "Houve um erro não esperado no seu cadastro"
     });
@@ -231,6 +231,8 @@ export class FornecedorService {
           'any.only': `O campo "Confirmar senha" deve ter uma senha igual a do campo "Senha"`,
           'any.required': `O campo "Confirmar senha" é um campo obrigatório`
         }),
+        despachar: Joi.allow(null, ''),
+        num_despachar: Joi.allow(null, ''),
         tipo: Joi.string().pattern(new RegExp('^PF$')).required()
     });
 
@@ -315,6 +317,8 @@ export class FornecedorService {
           'any.only': `O campo "Confirmar senha" deve ter uma senha igual a do campo "Senha"`,
           'any.required': `O campo "Confirmar senha" é um campo obrigatório`
         }),
+        despachar: Joi.allow(null, ''),
+        num_despachar: Joi.allow(null, ''),
         tipo: Joi.string().pattern(new RegExp('^PJ$')).required()
     });
 
