@@ -73,6 +73,26 @@ app.get('/fornecedor/:id', function(req, res){
 
 });
 
+app.delete('/fornecedor/:id', function(req, res){
+  const id = req.params.id;
+  const deleteObject = req.body;
+  console.log("meus parametros\n");
+  console.log(deleteObject);
+
+  try{
+    var result = fornecedorService.delete(deleteObject);
+    if(result === "Sucesso"){
+      res.status(200).send(result);
+    } else {
+      res.status(404).send(result);
+    }
+  } catch (err) {
+    const { message } = err;
+    res.status(400).send({message})
+  }
+
+});
+
 app.put('/fornecedor', function(req, res){
   const id = req.params.id;
   const fornecedorAtt = req.body;

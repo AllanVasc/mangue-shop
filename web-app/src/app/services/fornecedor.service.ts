@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
@@ -106,6 +106,25 @@ export class FornecedorService {
         if(message) return message;
         else return "Houve um erro não esperado no seu cadastro"
       });
+  }
+
+  delete(deleteObject: any): Promise<any>{
+    return this.http.delete(this.taURL + "/fornecedor/" + String(deleteObject['id']), new RequestOptions({headers: this.headers, body: JSON.stringify(deleteObject)}))
+    .toPromise()
+    .then( res => {
+      if (res.status === 200){
+        return "Sucesso";
+      }
+      else{
+        return res.text;
+      }
+    })
+    .catch( res => {
+      var message = JSON.parse(res['_body'])['message'];
+      if(message) return message;
+      else return "Houve um erro não esperado no seu cadastro"
+    });
+  
   }
 
   validateRegistrationPF(fornecedor: Fornecedor): any{

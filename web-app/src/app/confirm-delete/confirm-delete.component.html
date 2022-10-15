@@ -1,0 +1,42 @@
+<div class="main">
+  <div class="topnav">
+    <div class="left-aligned">
+      <img src="assets/images/cropped-crab.png">
+      <h4>Página Inicial</h4>
+    </div>
+    <div class="profile">
+      <img class="bell" src="assets/images/bell.png">
+      <h4>{{fornecedor.nome_exibicao}}</h4>
+      <img class="circle" src="assets/images/User.png">
+    </div>
+  </div>
+  <div class="below-topnav">
+    <div class="leftnav">
+      <button [routerLink]="'/dashboard'">Dashboard</button>
+      <button [routerLink]="'/despachos'">Despachos</button>
+      <button [routerLink]="'/account'">Minha conta</button>
+      <button>Financeiro</button>
+      <button>Produtos</button>
+    </div>
+    <div class="container">
+      <div class="content">
+        <div class="main-title">
+          <h1>{{fornecedor.nome_exibicao}}</h1>
+        </div>
+        <div class="content-item">
+          <h2>Tem certeza que deseja excluir sua conta?</h2>
+          <p>Cuidado! Essa operação é irreversível. Para confirmar sua remoção de conta é necessário confirmar seu email e senha.</p>
+        </div>
+        <div class="senha">
+          <h3>Insira seu email e senha</h3>
+          <input type="text" name="email" [(ngModel)]="this.email" placeholder="Insira seu email" required>
+          <input type="password" name="senha" [(ngModel)]="this.senha" placeholder="Insira sua senha" required>
+        </div>
+        <div class="buttons">
+          <button [routerLink]="'/account'" id="update">CANCELAR</button>
+          <button (click)="deleteAccount()" id="delete">EXCLUIR CONTA</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
