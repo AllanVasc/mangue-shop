@@ -1,29 +1,61 @@
-<div class="topnav">
-  <img src="assets/images/logo-no-title.png">
-  <h4>Página Inicial</h4>
-  <img class="circle" src="assets/images/User.png">
-  <h4 class="right">{{fornecedor.nome_razao}}</h4>
-  <button class="bell" [routerLink]="'/notifications'">
-	<img src="assets/images/bell.png">
-  </button>
-</div>
-<div class="rectangle">
-  <h2 class="title">Bem-vindo, {{fornecedor.nome_razao}}!</h2>
-  <h3 class="descriptionTitle">Descrição do Fornecedor</h3>
-  <a class="description">{{fornecedor.descricao}}</a>
-  <div class="leftnav">
-    <button class="menu" [routerLink]="'../dashboard'">Dashboard</button>
-    <button class="menu" [routerLink]="'../despachos'">Despachos</button>
-    <a>Minha Conta</a>
-    <a>Financeiro</a>
-    <a>Produtos</a>
+<div class="main">
+  <div class="topnav">
+    <div class="left-aligned">
+      <img src="assets/images/cropped-crab.png">
+      <h4>Página Inicial</h4>
+    </div>
+    <div class="profile">
+      <img class="bell" src="assets/images/bell.png">
+      <h4>{{fornecedor.nome_exibicao}}</h4>
+      <img class="circle" src="assets/images/User.png">
+    </div>
   </div>
-  <a class="revenue"> Faturamento no mês</a>
-  <div class="bigblock"></div>
-  <div class="upfront">À vista<br>R$ 23.212,35</div>
-    <a class="futurepayment">Parcelado<br>R$ 31.530,99</a>
-  <a class="campains"> Campanhas do mês</a>
-    <div class="block1">Desconto à vista</div>
-    <div class="block2">Frete Grátis</div>
-    <div class="block3">Cupons de Desconto</div>
+  <div class="below-topnav">
+    <div class="leftnav">
+      <button [routerLink]="'/dashboard'">Dashboard</button>
+      <button [routerLink]="'/despachos'">Despachos</button>
+      <button [routerLink]="'/account'">Minha conta</button>
+      <button>Financeiro</button>
+      <button>Produtos</button>
+      <div class="sair-container" (click)="logout()">
+        <button id="sair">Sair</button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="content">
+        <div class="main-title">
+          <h1>Bem vindo, {{fornecedor.nome_exibicao}}!</h1>
+        </div>
+        <div class="content-item">
+          <h2>Descrição do fornecedor</h2>
+          <div class="description-container">
+            <p>{{fornecedor.descricao}}</p>
+            <img src="https://s3-sa-east-1.amazonaws.com/projetos-artes/fullsize%2F2011%2F08%2F17%2F10%2FWDL-Logo-5614_11252_040944897_1556549958.jpg">
+          </div>
+        </div>
+        <div class="content-item">
+          <h2>Faturamento Agosto</h2>
+          <div class="faturamento-container">
+            <div class="value-container">
+              <h4>À vista</h4>
+              <h3 id="green">R$ 23.212,35</h3>
+            </div>
+            <div class="value-container">
+              <h4>Parcelado</h4>
+              <h3 id="red">R$ 31.530,90</h3>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="content-item">
+          <h2>Campanhas de Agosto</h2>
+          <div class="campanhas-container">
+            <div class="campanha">Desconto à vista</div>
+            <div class="campanha"> Frete grátis</div>
+            <div class="campanha">Cupom de desconto</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

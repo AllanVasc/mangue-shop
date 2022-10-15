@@ -64,14 +64,22 @@ const routes: Routes = [
     component: UpdatePasswordComponent,
     canActivate: [NegateAuthGuard],   //If isLoggedIn == false
   },
+  {
+    path: "despachos",
+    component: DespachosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "notifications",
+    component: NotificationsComponent,
+    canActivate: [AuthGuard]
+  },
   
   // Completar os outros
   {path: 'register', component: RegisterComponent},
   {path: 'register-pf', component: RegisterPFComponent},
   {path: 'register-pj', component: RegisterPJComponent},
   {path: 'finish-registration', component: FinishRegistrationComponent},
-  {path: 'despachos', component: DespachosComponent},
-  {path: 'notifications', component: NotificationsComponent}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
