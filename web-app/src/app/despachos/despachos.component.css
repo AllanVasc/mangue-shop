@@ -183,6 +183,39 @@ input[type=submit]{
     text-align: center;
 }
 
+
+.msg-success{
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+    left: 69vw;
+    top: 51vh;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1vw;
+    line-height: 1vh;
+    display: flex;
+    align-items: center;
+    color: #00CC66;
+}
+
+.msg-error{
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+    left: 69vw;
+    top: 51vh;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1vw;
+    line-height: 1vh;
+    display: flex;
+    align-items: center;
+    color: #d1031b;
+}
+
 input[type=submit]:hover{
     background-color: #f68c02;
 }
