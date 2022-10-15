@@ -22,6 +22,7 @@ import { FornecedorService } from './services/fornecedor.service';
 import { DespachosComponent } from './despachos/despachos.component';
 import { AccountComponent } from './account/account.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 
@@ -41,8 +42,9 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
     DespachosComponent,
     AccountComponent,
     UpdateAccountComponent,
+    ConfirmDeleteComponent,
     NotificationsComponent,
-    UpdatePasswordComponent,
+    UpdatePasswordComponent
   ],
   imports: [
     BrowserModule,

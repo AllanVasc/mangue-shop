@@ -14,6 +14,7 @@ import { FinishRegistrationComponent } from './finish-registration/finish-regist
 import { DespachosComponent } from './despachos/despachos.component';
 import { AccountComponent } from './account/account.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 
@@ -51,6 +52,11 @@ const routes: Routes = [
   {
     path: 'update-account',
     component: UpdateAccountComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "confirm-delete",
+    component: ConfirmDeleteComponent,
     canActivate: [AuthGuard]
   },
   {

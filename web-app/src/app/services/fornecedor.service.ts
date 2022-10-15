@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
@@ -122,6 +122,24 @@ export class FornecedorService {
       });
   }
 
+  delete(deleteObject: any): Promise<any>{
+    return this.http.delete(this.taURL + "/fornecedor/" + String(deleteObject['id']), new RequestOptions({headers: this.headers, body: JSON.stringify(deleteObject)}))
+    .toPromise()
+    .then( res => {
+      if (res.status === 200){
+        return "Sucesso";
+      }
+      else{
+        return String(res['_body']);
+      }
+    })
+    .catch( res => {
+      var message = String(res['_body']);
+      if(message) return message;
+      else return "Houve um erro não esperado no seu cadastro"
+    });
+  }
+  
   update_password(pacote: Object): Promise<any>{
     // console.log(pacote);
     return this.http.put(this.taURL + `/update-password`, JSON.stringify(pacote), {headers: this.headers})
@@ -213,6 +231,8 @@ export class FornecedorService {
           'any.only': `O campo "Confirmar senha" deve ter uma senha igual a do campo "Senha"`,
           'any.required': `O campo "Confirmar senha" é um campo obrigatório`
         }),
+        despachar: Joi.allow(null, ''),
+        num_despachar: Joi.allow(null, ''),
         tipo: Joi.string().pattern(new RegExp('^PF$')).required()
     });
 
@@ -297,6 +317,8 @@ export class FornecedorService {
           'any.only': `O campo "Confirmar senha" deve ter uma senha igual a do campo "Senha"`,
           'any.required': `O campo "Confirmar senha" é um campo obrigatório`
         }),
+        despachar: Joi.allow(null, ''),
+        num_despachar: Joi.allow(null, ''),
         tipo: Joi.string().pattern(new RegExp('^PJ$')).required()
     });
 
