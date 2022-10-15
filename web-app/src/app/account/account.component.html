@@ -2,7 +2,7 @@
   <div class="topnav">
     <div class="left-aligned">
       <img src="assets/images/cropped-crab.png">
-      <h4>Página Inicial</h4>
+      <h4>Minha conta</h4>
     </div>
     <div class="profile">
       <img class="bell" src="assets/images/bell.png">
@@ -17,6 +17,9 @@
       <button [routerLink]="'/account'">Minha conta</button>
       <button>Financeiro</button>
       <button>Produtos</button>
+      <div class="sair-container" (click)="logout()">
+        <button id="sair">Sair</button>
+      </div>
     </div>
     <div class="container">
       <div class="content">
@@ -24,7 +27,7 @@
           <h1>{{fornecedor.nome_exibicao}}</h1>
         </div>
         <div class="content-item">
-          <h2>Descrição da loja</h2>
+          <h2>Descrição do fornecedor</h2>
           <p>{{fornecedor.descricao}}</p>
         </div>
         <div class="content-item">
@@ -48,7 +51,7 @@
         </div>
         <div class="buttons">
           <button [routerLink]="'/update-account'" id="update">ATUALIZAR DADOS</button>
-          <button [routerLink]="'/delete-account'" id="delete">EXCLUIR CONTA</button>
+          <button [routerLink]="'/confirm-delete'" id="delete">EXCLUIR CONTA</button>
         </div>
       </div>
     </div>

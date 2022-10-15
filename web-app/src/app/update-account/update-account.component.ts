@@ -60,4 +60,8 @@ export class UpdateAccountComponent implements OnInit {
     });
   }
 
+  logout(){
+    this.fornecedorService.logOut();
+  }
+
 }

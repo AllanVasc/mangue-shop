@@ -9,6 +9,7 @@ var hbs = require('nodemailer-express-handlebars');
 const path = require('path');
 const MANGUE_SHOP_EMAIL = "mangueshopcompany@gmail.com";
 const MANGUE_SHOP_PASSWORD = 'kcyghcrtehwofnkl';
+const path_to_email_assets = __dirname + "/../../src";
 
 export class FornecedorService{
     fornecedores: DBService;
@@ -117,11 +118,32 @@ export class FornecedorService{
             fornecedorUpdate.email = fornecedor.email;
 
             var index = this.fornecedores.getData().indexOf(data);
+            console.log("IndexOf(Data): " + index);
             this.fornecedores.update(index, fornecedorUpdate);
             console.log("Fornecedor atualizado com sucesso\n");
             return "Sucesso";
         }
         return "Houve um erro não esperado";
+    }
+
+    delete(deleteObject: any): string{
+      const delete_id = deleteObject['id'];
+      const delete_email = deleteObject['email'];
+      const delete_password = deleteObject['senha'];
+      
+      var data = this.fornecedores.getData().find(({ id }: any) => id == delete_id);
+      if(data){
+        if(data['email'] == delete_email && data['senha'] == delete_password){
+          var index = this.fornecedores.getData().indexOf(data);
+          console.log("Vou deletar o de id: " + delete_id + "que eh o index: " + index);
+          console.log(this.getById(Number(delete_id)))
+          this.fornecedores.delete(index);
+          console.log(this.getById(Number(delete_id)))
+          return "Sucesso";
+        }
+        return "Houve um erro na validação das credenciais do fornecedor";
+      }
+      return "Houve um erro na validação das credenciais do fornecedor";
     }
 
     // Only Update password!
@@ -255,7 +277,9 @@ export class FornecedorService{
             'any.only': `O campo "Confirmar senha" deve ter uma senha igual a do campo "Senha"`,
             'any.required': `O campo "Confirmar senha" é um campo obrigatório`
           }),
-          tipo: Joi.string().pattern(new RegExp('^PF$')).required()
+          tipo: Joi.string().pattern(new RegExp('^PF$')).required(),
+          despachar: Joi.allow(null, ''),
+          num_despachar: Joi.allow(null, ''),
       });
   
       return schema.validate(fornecedor);
@@ -338,7 +362,9 @@ export class FornecedorService{
             'any.only': `O campo "Confirmar senha" deve ter uma senha igual a do campo "Senha"`,
             'any.required': `O campo "Confirmar senha" é um campo obrigatório`
           }),
-          tipo: Joi.string().pattern(new RegExp('^PJ$')).required()
+          tipo: Joi.string().pattern(new RegExp('^PJ$')).required(),
+          despachar: Joi.allow(null, ''),
+          num_despachar: Joi.allow(null, ''),
       });
   
       return schema.validate(fornecedor);
@@ -381,9 +407,9 @@ export class FornecedorService{
             viewEngine: {
                 extname: '.handlebars',
                 defaultLayout: body.template,
-                layoutsDir: path.join(__dirname, 'email-assets')
+                layoutsDir: path.join(path_to_email_assets, 'email-assets')
             },
-            viewPath: path.join(__dirname, 'email-assets')
+            viewPath: path.join(path_to_email_assets, 'email-assets')
           }));
 
           // Config to mail

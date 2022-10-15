@@ -26,6 +26,13 @@
     />
 
     <button
+      class="button-medium"
+      [routerLink]="'../'"
+    >
+      Voltar
+    </button>
+
+    <button
         class="button-medium"
         type="submit"
         (click)="login()"
@@ -40,7 +47,7 @@
       </a>
     </div>
 
-    <div class="msg-erro">
+    <div class="msg-erro" name="errorMsg">
       <span *ngIf="errouSenha">Dados incorretos!</span>
     </div>
 

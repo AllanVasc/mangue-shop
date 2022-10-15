@@ -14,6 +14,7 @@ import { FinishRegistrationComponent } from './finish-registration/finish-regist
 import { DespachosComponent } from './despachos/despachos.component';
 import { AccountComponent } from './account/account.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 
@@ -54,9 +55,24 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: "confirm-delete",
+    component: ConfirmDeleteComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: "update-password",
     component: UpdatePasswordComponent,
     canActivate: [NegateAuthGuard],   //If isLoggedIn == false
+  },
+  {
+    path: "despachos",
+    component: DespachosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "notifications",
+    component: NotificationsComponent,
+    canActivate: [AuthGuard]
   },
   
   // Completar os outros
@@ -64,8 +80,6 @@ const routes: Routes = [
   {path: 'register-pf', component: RegisterPFComponent},
   {path: 'register-pj', component: RegisterPJComponent},
   {path: 'finish-registration', component: FinishRegistrationComponent},
-  {path: 'despachos', component: DespachosComponent},
-  {path: 'notifications', component: NotificationsComponent}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

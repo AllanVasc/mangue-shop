@@ -58,4 +58,8 @@ export class DespachosComponent implements OnInit {
     })
   }
 
+  logout(){
+    this.fornecedorService.logOut();
+  }
+
 }
