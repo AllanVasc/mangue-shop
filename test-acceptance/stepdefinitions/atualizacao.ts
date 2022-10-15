@@ -57,7 +57,7 @@ defineSupportCode(function ({ Given, When, Then, Before, setDefaultTimeout }) {
 
     setDefaultTimeout(10 * 1000);
 
-    Given(/^um usuário que ja tem sua loja cadastrada está na página de atualizar conta$/)
+    // Given(/^um usuário que ja tem sua loja cadastrada está na página de atualizar conta$/)
 
     // Before(async () => {
     //   await goTo('login');
