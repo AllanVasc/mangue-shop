@@ -16,6 +16,7 @@ import { AccountComponent } from './account/account.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 
 const routes: Routes = [
   {
@@ -39,7 +40,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],         //If isLoggedIn == true
   },
   {
-	path: 'notifications',
+	  path: 'notifications',
     component: NotificationsComponent,
     canActivate: [AuthGuard],         //If isLoggedIn == true
   },
@@ -58,6 +59,12 @@ const routes: Routes = [
     component: ConfirmDeleteComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: "update-password",
+    component: UpdatePasswordComponent,
+    canActivate: [NegateAuthGuard],   //If isLoggedIn == false
+  },
+  
   // Completar os outros
   {path: 'register', component: RegisterComponent},
   {path: 'register-pf', component: RegisterPFComponent},

@@ -7,7 +7,8 @@ export class DBService {
 
     constructor(name: string) {
         this.name = name;
-        this.path = __dirname + '/files/' + name + '.json';
+        // __dirname is created in relation to folder "typeScript"
+        this.path = __dirname + '/../../database/files/' + name + '.json';
         this.read();
     }
 

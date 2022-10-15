@@ -21,11 +21,11 @@ var fornecedorService: FornecedorService = new FornecedorService();
 app.post('/register', async function(req: express.Request, res: express.Response){
   const fornecedor: Fornecedor = <Fornecedor> req.body;
   try {
-    var result = fornecedorService.add(fornecedor);
-    if (result === "Sucesso") {
+    const result = fornecedorService.add(fornecedor);
+    if (result) {
       res.status(201).send(result);
     } else {
-      res.status(403).send({ message: result});
+      res.status(403).send({ message: "Nao foi possivel adicionar o fornecedor"});
     }
   } catch (err) {
     const {message} = err;
@@ -57,6 +57,45 @@ app.post('/login', function(req, res) {
   }
 });
 
+// Forgot Password
+app.post('/forgot_password/:email', function (req, res){
+  const email = req.params.email;
+  try {
+    fornecedorService.forgot_password(email).then((result) =>{
+      if(result){
+        res.status(201).send({ message: "email enviado com sucesso" });
+      }
+      else{
+        res.status(200).send({ message: "Deu erro!"});
+      }
+    });
+  }
+  catch (err) {
+    const { message } = err;
+    res.status(400).send({ message });
+  }
+});
+
+// Update only password
+app.put('/update-password', function (req, res){
+  const pacote = req.body;
+  // console.log(pacote);
+  try {
+    const result = fornecedorService.update_password(pacote);
+    if(result){
+      res.status(201).send({ message: "Senha modificada!" });
+    }
+    else{
+      res.status(200).send({ message: "Deu ruim!"});
+    }
+  }
+  catch (err) {
+    const { message } = err;
+    res.status(400).send({ message });
+  }
+});
+
+// Get Fornecedor pelo ID
 app.get('/fornecedor/:id', function(req, res){
   const id = req.params.id;
   try{
@@ -70,7 +109,24 @@ app.get('/fornecedor/:id', function(req, res){
     const { message } = err;
     res.status(400).send({message})
   }
+});
 
+// Get Fornecedor pelo email
+app.get('/fornecedor/email/:email', function(req, res){
+  const email = req.params.email;
+  // console.log(email);
+  try{
+    const fornecedor = fornecedorService.getByEmail(email);
+    if(fornecedor){
+      console.log("encontrei o fornecedor")
+      res.status(200).send(fornecedor);
+    } else {
+      res.status(404).send({message: "Fornecedor nao encontrado"});
+    }
+  } catch (err) {
+    const { message } = err;
+    res.status(400).send({message})
+  }
 });
 
 app.delete('/fornecedor/:id', function(req, res){
@@ -93,6 +149,7 @@ app.delete('/fornecedor/:id', function(req, res){
 
 });
 
+// Update Fornecedor
 app.put('/fornecedor', function(req, res){
   const id = req.params.id;
   const fornecedorAtt = req.body;

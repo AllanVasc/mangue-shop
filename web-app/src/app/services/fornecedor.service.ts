@@ -45,7 +45,21 @@ export class FornecedorService {
       }
     })
     .catch(this.catch);
+  }
 
+  getByEmail(email: string): Promise<Fornecedor>{
+    return this.http.get(this.taURL + '/fornecedor/email/' + String(email), {headers: this.headers})
+    .toPromise()
+    .then( (res) =>{
+      if (res.status === 200){
+        console.log(res.json().fornecedor)
+        this.fornecedor = res.json().fornecedor;
+        return res.json();
+      } else{
+        return null;
+      }
+    })
+    .catch(this.catch);
   }
 
   getFornecedor(){
@@ -124,7 +138,19 @@ export class FornecedorService {
       if(message) return message;
       else return "Houve um erro não esperado no seu cadastro"
     });
+  }
   
+  update_password(pacote: Object): Promise<any>{
+    // console.log(pacote);
+    return this.http.put(this.taURL + `/update-password`, JSON.stringify(pacote), {headers: this.headers})
+      .toPromise()
+      .then((res) => {
+        if (res.status === 201){
+          return true;
+        }
+        else return false;
+      })
+      .catch(this.catch);
   }
 
   validateRegistrationPF(fornecedor: Fornecedor): any{
@@ -315,6 +341,16 @@ export class FornecedorService {
     this.setId('-1');
     this.setIsLoggedIn(false);
     this.router.navigate(['/']);
+  }
+
+  forgot_password(email: string): Promise<Fornecedor>{
+    return this.http.post(this.taURL + `/forgot_password/${email}`, {headers: this.headers})
+      .toPromise()
+      .then((res) => {
+        if(res.status === 201) return true;
+        else return null;
+      })
+      .catch(this.catch);
   }
 
   private catch(erro: any): Promise<any>{
