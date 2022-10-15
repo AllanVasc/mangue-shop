@@ -9,6 +9,7 @@ var hbs = require('nodemailer-express-handlebars');
 const path = require('path');
 const MANGUE_SHOP_EMAIL = "mangueshopcompany@gmail.com";
 const MANGUE_SHOP_PASSWORD = 'kcyghcrtehwofnkl';
+const path_to_email_assets = __dirname + "/../../src";
 
 export class FornecedorService{
     fornecedores: DBService;
@@ -370,9 +371,9 @@ export class FornecedorService{
             viewEngine: {
                 extname: '.handlebars',
                 defaultLayout: body.template,
-                layoutsDir: path.join(__dirname, 'email-assets')
+                layoutsDir: path.join(path_to_email_assets, 'email-assets')
             },
-            viewPath: path.join(__dirname, 'email-assets')
+            viewPath: path.join(path_to_email_assets, 'email-assets')
           }));
 
           // Config to mail
