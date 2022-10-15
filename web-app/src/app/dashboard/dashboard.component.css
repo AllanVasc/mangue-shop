@@ -1,299 +1,223 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter';
+}
+
+.main{
+    padding: 0;
+    margin: 0;
+    height: 98vh;
+    width: 98vw;
+}
+
 .topnav{
-    position: absolute;
-    width: 100vw;
+    display: flex;
     height: 16vh;
-    overflow: hidden;
-    background: #1a687e;
+    background-color: #1a687e;
 }
 
+.left-aligned{
+    display: flex;
+    flex: 50%;
+    justify-content: flex-start;
+    align-items: center;
+}
 
-.topnav h4{
-    font-family: 'Inter';
-    font-style: normal;
-    float: left;
+.left-aligned img{
+    height: 65%;
+    margin-left: 4%;
+}
+
+.left-aligned h4{
+    text-align: center;
+    margin-left: 10%;
+    font-size: 3.3vh;
     color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 2vw;
 }
 
-.topnav img{
-    float: left;
-    text-align: center;
-    text-decoration: none;
-    max-width: 70%;
-    height: auto
+.profile{
+    flex: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-.topnav .right{
-    font-family: 'Inter';
-    font-style: normal;
-    float: right;
-    padding-right: 1vw;
+.profile .circle{
+    margin-left: 2%;
+    margin-right: 2%;
+    height: 50%;
+    background-color: white;
+    padding: 1px;
+    border-radius: 50%;
+    border: 10px;
+}
+
+.profile h4{
+    font-size: 3.3vh;
     color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 2vw;
 }
 
-.topnav .circle{
-    margin-top: 3.5vh;
-    margin-right: 2.5vw;
-    float: right;
-    border-radius: 70%;
-    width: 8vh;
-    height: auto;
-    background: white;
+.profile .bell{
+    margin-right: 5%;
 }
 
-.topnav .bell{
-    margin-top: 5.5vh;
-    margin-right: 1vw;
-    float: right;
-    display: block;
-	background: #1a687e;
-	border:none;
+.below-topnav{
+    min-height: 85vh;
+    display: flex;
+    margin-bottom: 0px;
 }
 
 .leftnav{
-    position: absolute;
-    width: 18%;
-    height: 100%;
     background: #032539;
-    top: 17vh;
+    display: flex;
+    flex-direction: column;
+    width: 22vw;
 }
 
-.leftnav a{
-    color: white;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px;
-    display: block;
-    transition: 0.3s;
-    border-style: solid;
-    border-width: 1px;
-    border-color: white;
-}
-
-.menu{
-    color: white;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px;
-    display: block;
-    transition: 0.3s;
-    border-style: solid;
-    border-width: 1px;
-    border-color: white;
+.leftnav button{
     background-color: #032539;
+    height: 5vw;
+    border: 1px solid white;
+    font-size: 2vh;
+    color: white;
+}
+
+.leftnav button:hover{
+    transition: 0.8s;
+    background-color: #001A29;
+    border: 1px solid white;
+    font-size: 2vh;
+    color: white;
+}
+
+.leftnav .sair-container{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.leftnav .sair-container button{
+    text-align: left;
+    padding-left: 10%;
     width: 100%;
+    border: 0px dotted white;
 }
 
-.menu:hover{
-    background-color: #001A29;
-}
-.leftnav a:hover{
-    background-color: #001A29;
-}
-
-.rectangle{
-    width: 100vw;
-    height: 116vh;
-    background: #FBF3F2;
+.container{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: inherit;
 }
 
-.title{
-    position: absolute;
-    width: 46vw;
-    height: 11vh;
-    left: 40vw;
-    top: 18vh;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2.3vw;
-    line-height: 1vh;
+.content{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 15%;
+    height: 97%;
+}
+
+.main-title{
+    height: 15%;
+}
+
+.content-item{
+    margin-bottom: 4%;
+}
+.content-item h2{
+    margin-bottom: 2%;
+}
+
+.description-container{
     display: flex;
     align-items: center;
-    color: #032539;
-    padding: 0%;
-    margin: 0%;
+    justify-content: space-between;
+    margin-right: 20%;
 }
 
-.descriptionTitle{
-    position: absolute;
-    width: 18vw;
-    height: 5vh;
-    left: 40vw;
-    top:28vh;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1.4vw;
-    line-height: 1vh;
+.description-container p{
+    width: 65%;
+}
+
+.description-container img{
+    width: 25%;
+}
+
+.faturamento-container{
     display: flex;
+    background-color: #032539;
+    color: white;
     align-items: center;
-    text-decoration-line: underline;
-    color: #000000;
+    justify-content: space-between;
+    margin-right: 20%;
+    padding: 5%;
+    border-radius: 40px;
 }
 
-
-.description{
-    position: absolute;
-    width:30vw;
-    height: 20vh;
-    left: 40vw;
-    top: 32vh;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.1vw;
-    line-height: 3vh;
+.faturamento-container .value-container{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    color: #000000;
-    text-justify: distribute;
+    width: 45%;
 }
 
-.revenue{
-    position: absolute;
-    width: 18vw;
-    height: 5vh;
-    left: 40vw;
-    top: 54vh;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1.4vw;
-    line-height: 1vh;
-    display: flex;
-    align-items: center;
-    text-decoration-line: underline;
-    color: #000000;
+.faturamento-container #green{
+    margin-top: 5%;
+    color: #00CC66;
 }
+.faturamento-container #red{
+    margin-top: 5%;
 
-.campains{
-    position: absolute;
-    width: 15vw;
-    height: 5vh;
-    left: 40vw;
-    top: 86vh;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1.4vw;
-    line-height: 2vh;
-    display: flex;
-    align-items: center;
-    text-decoration-line: underline;
-    color: #000000;
-}
-
-.bigblock{
-    position: absolute;
-    left: 39vw;
-    top: 60vh;
-    width: 36vw;
-    height: 4vh;
-    padding: 4%;
-    background: #032539;
-    border-radius: 2vw;
-}
-
-.upfront{
-    position: absolute;
-    left: 40vw;
-    top: 60vh;
-    width: 10vw;
-    height: 4vh;
-    padding: 4%;
-    background: #032539;
-    border-radius: 2vw;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.2vw;
-    line-height: 29px;
-    text-align: center;
-    color: #00CC66 ;
-}
-
-.futurepayment{
-    position: absolute;
-    left: 64vw;
-    top: 60vh;
-    width: 10vw;
-    height: 4vh;
-    padding: 4%;
-    background: #032539;
-    border-radius: 2vw;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.2vw;
-    line-height: 29px;
-    text-align: center;
     color: #FA991C;
 }
 
-
-.block1{
-    position: absolute;
-    left: 39vw;
-    top: 92vh;
-    width: 14vw;
-    height: 18vh;
-    background: #032539;
-    border-radius: 2vw;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 200;
-    font-size: 1vw;
-    line-height: 29px;
+.campanhas-container{
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
     text-align: center;
-
-
-    color: #FFFFFF;
+    margin-right: 20%;
 }
 
-.block2{
-    position: absolute;
-    left: 54vw;
-    top: 92vh;
-    width: 14vw;
-    height: 18vh;
-    background: #032539;
-    border-radius: 2vw;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 200;
-    font-size: 1vw;
-    line-height: 29px;
-    text-align: center;
-
-    color: #FFFFFF;
-
+.campanhas-container .campanha{
+    width: 30%;
+    padding-top: 4%;
+    padding-bottom: 10%;
+    border-radius: 30px;
+    background-color: #032539;
 }
 
-.block3{
-    position: absolute;
-    left: 69vw;
-    top: 92vh;
-    width: 14vw;
-    height: 18vh;
-    background: #032539;
-    border-radius: 2vw;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 200;
-    font-size: 1vw;
-    line-height: 29px;
+
+.buttons{
+    display: flex;
+    margin-top: 5%;
+    margin-right: 20%;
+    height: 5%;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+
+.buttons button{
     text-align: center;
+    width: 28%;
+    font: inherit;
+    font-weight: 600;
+    border-radius: 5%;
+    border: 0.5px solid black;
+}
 
-    color: #FFFFFF;
-
+#update{
+    background-color: #FA991C;
+}
+#delete{
+    background-color: #F71735;
 }

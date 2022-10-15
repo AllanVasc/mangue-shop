@@ -46,4 +46,8 @@ export class ConfirmDeleteComponent implements OnInit {
     });
     ;
   }
+
+  logout(){
+    this.fornecedorService.logOut();
+  }
 }

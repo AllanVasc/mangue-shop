@@ -1,4 +1,18 @@
-# Estrutura do projeto a ser utilizado na disciplina de ESS
+# Mangue shop
+---
+Projeto de uma aplicação web que fornece uma plataforma de vendas para os fornecedores do ecommerce fictício "Mangue shop". Permitindo que os fornecedores se cadastrem, realizem login/logout, modifiquem a senha caso a mesma tenha sido esquecida, editem os dados de suas conta, vejam suas notificações de pedidos, gerenciem seus despachos e removam suas conta.
+
+Este projeto foi desenvolvido com as tecnologias Angular JS e NodeJS, e faz parte da avaliação da disciplina IF682 - Engenharia de software e Sistemas no CIn-UFPE.
+
+## Time de desenvolvimento
+---
+- Allan Soares Vasconcelos
+- João Paulo de Albuquerque Rocha
+- Júlio Cesar Farias da Luz
+- Mácio Monteiro Meneses
+
+## Como rodar o projeto
+---
 
 ### Dependências
 

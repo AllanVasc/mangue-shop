@@ -24,4 +24,8 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  logout(){
+    this.fornecedorService.logOut();
+  }
+
 }

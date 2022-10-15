@@ -24,4 +24,8 @@ export class AccountComponent implements OnInit {
     });
   }
 
+  logout(){
+    this.fornecedorService.logOut();
+  }
+
 }

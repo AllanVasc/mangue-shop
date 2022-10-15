@@ -72,12 +72,12 @@
     background: #032539;
     display: flex;
     flex-direction: column;
-    width: 32vh;
+    width: 22vw;
 }
 
 .leftnav button{
     background-color: #032539;
-    height: 7%;
+    height: 5vw;
     border: 1px solid white;
     font-size: 2vh;
     color: white;
@@ -86,10 +86,23 @@
 .leftnav button:hover{
     transition: 0.8s;
     background-color: #001A29;
-    height: 7%;
     border: 1px solid white;
     font-size: 2vh;
     color: white;
+}
+
+.leftnav .sair-container{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.leftnav .sair-container button{
+    text-align: left;
+    padding-left: 10%;
+    width: 100%;
+    border: 0px dotted white;
 }
 
 .container{
