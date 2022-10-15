@@ -22,7 +22,7 @@ app.post('/register', async function(req: express.Request, res: express.Response
   const fornecedor: Fornecedor = <Fornecedor> req.body;
   try {
     const result = fornecedorService.add(fornecedor);
-    if (result) {
+    if (result == "Sucesso") {
       res.status(201).send(result);
     } else {
       res.status(403).send({ message: "Nao foi possivel adicionar o fornecedor"});

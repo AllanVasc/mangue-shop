@@ -4,6 +4,7 @@ import { Http} from '@angular/http';
 import { Fornecedor } from '../fornecedor';
 import { FornecedorService } from '../services/fornecedor.service';
 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-pf',
@@ -18,7 +19,7 @@ export class RegisterPFComponent implements OnInit {
   private errorMessage: string;
 
 
-  constructor(_fornecedorService: FornecedorService) {
+  constructor(_fornecedorService: FornecedorService, private router: Router) {
     this.fornecedorService = _fornecedorService;
   }
 
@@ -42,6 +43,7 @@ export class RegisterPFComponent implements OnInit {
     .then( (result) => {
         if(result === "Sucesso"){
           console.log("Deu bom!\n");
+          this.router.navigate(['/finish-registration']);
         }
         else{
           this.error = true;

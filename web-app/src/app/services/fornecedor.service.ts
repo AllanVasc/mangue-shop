@@ -85,7 +85,6 @@ export class FornecedorService {
       .toPromise()
       .then(res => {
         if (res.status === 201) {
-          this.router.navigate(['/finish-registration']);
           return "Sucesso";
         } 
         else {

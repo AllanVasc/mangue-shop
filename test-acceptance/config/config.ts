@@ -7,7 +7,7 @@ export let config: Config = {
     SELENIUM_PROMISE_MANAGER: false,
 
     capabilities: {
-        browserName: 'chrome'
+        browserName: 'firefox'
     },
 
     framework: 'custom',
@@ -19,7 +19,7 @@ export let config: Config = {
 
     onPrepare: () => {
 
-        browser.ignoreSynchronization = true;
+        browser.ignoreSynchronization = false;
         browser.manage().window().maximize();
 
     },
