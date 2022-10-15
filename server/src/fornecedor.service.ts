@@ -126,7 +126,6 @@ export class FornecedorService{
         return "Houve um erro não esperado";
     }
 
-<<<<<<< HEAD
     delete(deleteObject: any): string{
       const delete_id = deleteObject['id'];
       const delete_email = deleteObject['email'];
@@ -145,7 +144,8 @@ export class FornecedorService{
         return "Houve um erro na validação das credenciais do fornecedor";
       }
       return "Houve um erro na validação das credenciais do fornecedor";
-=======
+    }
+    
     // Only Update password!
     update_password(pacote: any){
       var fornecedor_to_change = this.getByEmail(pacote.email);
@@ -157,7 +157,6 @@ export class FornecedorService{
       console.log("Lista de fornecedores:")
       console.log(this.fornecedores.data);
       return true;
->>>>>>> upstream/master
     }
 
     get() : Fornecedor[] {
