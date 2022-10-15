@@ -3,6 +3,13 @@ import { DBService} from "./../database/database";
 
 const Joi = require('@hapi/joi');
 
+// Variaveis para o envio de email
+var nodemailer = require('nodemailer');
+var hbs = require('nodemailer-express-handlebars');
+const path = require('path');
+const MANGUE_SHOP_EMAIL = "mangueshopcompany@gmail.com";
+const MANGUE_SHOP_PASSWORD = 'kcyghcrtehwofnkl';
+
 export class FornecedorService{
     fornecedores: DBService;
     idCount: number;
@@ -115,6 +122,19 @@ export class FornecedorService{
             return "Sucesso";
         }
         return "Houve um erro não esperado";
+    }
+
+    // Only Update password!
+    update_password(pacote: any){
+      var fornecedor_to_change = this.getByEmail(pacote.email);
+      var index = this.fornecedores.getData().indexOf(fornecedor_to_change);
+
+      fornecedor_to_change.senha = pacote.new_password;
+      this.fornecedores.update(index, fornecedor_to_change);
+      console.log("Senha Atualizada!");
+      console.log("Lista de fornecedores:")
+      console.log(this.fornecedores.data);
+      return true;
     }
 
     get() : Fornecedor[] {
@@ -311,5 +331,70 @@ export class FornecedorService{
       });
   
       return schema.validate(fornecedor);
+    }
+
+    // async permite a execução da função assincrona
+    // e a utilização de wait
+    async forgot_password(email : string){
+      var usuario = this.getByEmail(email);
+      console.log("Sending email to: " + email);
+      if(usuario){
+        await this.sendEmail({
+          email: usuario.email,
+          subject: "Mangue Shop - Link para redefinição de senha",
+          template: "forgot_password",
+          context:{
+            id: usuario.email
+          }
+        });
+        return true;
+      }
+      return false;
+    }
+
+    // https://medium.com/@surabhisahay307/how-to-use-nodemailer-in-angular-dcbc9c048646
+    sendEmail(body: any){
+      return new Promise((resolve, reject) => {
+          
+          // Instanciando modulo para envio
+          var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user : MANGUE_SHOP_EMAIL,
+              pass: MANGUE_SHOP_PASSWORD
+            }
+          });
+          
+          // Loading template email
+          transporter.use('compile', hbs({
+            viewEngine: {
+                extname: '.handlebars',
+                defaultLayout: body.template,
+                layoutsDir: path.join(__dirname, 'email-assets')
+            },
+            viewPath: path.join(__dirname, 'email-assets')
+          }));
+
+          // Config to mail
+          var mailOptions = {
+            from: MANGUE_SHOP_EMAIL,
+            to: body.email,
+            subject: body.subject,
+            template: body.template,
+            context: body.context
+          };
+          
+          // Enviando
+          transporter.sendMail(mailOptions, function(error: any, info: any){
+            if(!error){
+              console.log("SUCESS! sent to " + body.email);
+              resolve(true);
+            }
+            else{
+              console.log(error);
+              resolve(false);
+            }
+          });
+      });
     }
 }
