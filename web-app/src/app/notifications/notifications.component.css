@@ -1,0 +1,64 @@
+.topnav{
+    position: absolute;
+    width: 100vw;
+    height: 16vh;
+    overflow: hidden;
+    background: #1a687e;
+}
+
+
+.topnav h4{
+    font-family: 'Inter';
+    font-style: normal;
+    float: left;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2vw;
+}
+
+.topnav img{
+    float: left;
+    text-align: center;
+    text-decoration: none;
+    max-width: 70%;
+    height: auto
+}
+
+.topnav .right{
+    font-family: 'Inter';
+    font-style: normal;
+    float: right;
+    padding-right: 1vw;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2vw;
+}
+
+.topnav .circle{
+    margin-top: 3.5vh;
+    margin-right: 2.5vw;
+    float: right;
+    border-radius: 70%;
+    width: 8vh;
+    height: auto;
+    background: white;
+}
+
+.topnav .bell{
+    margin-top: 5.5vh;
+    margin-right: 1vw;
+    float: right;
+    display: block;
+}
+
+
+
+.rectangle{
+    width: 100vw;
+    height: 116vh;
+    background: #FBF3F2;
+}
+
+

@@ -23,6 +23,7 @@ import { DespachosComponent } from './despachos/despachos.component';
 import { AccountComponent } from './account/account.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 //import { routing } from './app-routing.module';
 
@@ -40,7 +41,8 @@ import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.componen
     DespachosComponent,
     AccountComponent,
     UpdateAccountComponent,
-    ConfirmDeleteComponent
+    ConfirmDeleteComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
