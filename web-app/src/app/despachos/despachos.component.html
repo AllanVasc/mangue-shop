@@ -2,7 +2,7 @@
   <img src="assets/images/logo-no-title.png">
   <h4>Despacho de Pedidos</h4>
   <img class="circle" src="assets/images/User.png">
-  <h4 class="right">{{fornecedor.nome_razao}}</h4>
+  <h4 class="right">{{fornecedor.nome_exibicao}}</h4>
   <img class="bell" src="assets/images/bell.png">
 </div>
 <div class="rectangle">
@@ -10,11 +10,12 @@
   <a class="description">Aqui você deve informar o Nº do pedido e indicar o despacho desse para a transportadora.
     <br> Dessa forma, seus clientes ficarão sabendo que o pedido já está a caminho!</a>
   <div class="leftnav">
-    <button class="menu" [routerLink]="'../dashboard'">Dashboard</button>
-    <a>Despachos</a>
-    <a>Minha Conta</a>
+    <button class="menu" [routerLink]="'/dashboard'">Dashboard</button>
+    <button class="menu" [routerLink]="'/despachos'">Despachos</button>
+    <button class="menu" [routerLink]="'/account'">Minha conta</button>
     <a>Financeiro</a>
     <a>Produtos</a>
+    <button class="sair-container" (click)="logout()" id="sair">Sair</button>
   </div>
   <a class="ordertitle"> Nº do Pedido</a>
   <form [formGroup]="despachoForm" name="despacho">
@@ -28,10 +29,10 @@
       <span *ngIf="despachavel">Despachado com Sucesso!</span>
     </div>
     <div class="msg-error">
-      <span *ngIf="codinexistente">Codígo do Pedido Incorreto</span>
+      <span *ngIf="codinexistente">Codígo do Pedido Inválido</span>
     </div> 
   </form>
-  <button class="button">Listar Pedidos Enviados</button> 
+  <button class="button" [routerLink]="'/listdespacho'">Listar Pedidos Despacháveis</button> 
   <a class="standby"> Aguardando</a>
   <a class="dispatch"> Despachar</a>
   <a class="transit"> Em Trânsito</a>
