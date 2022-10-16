@@ -9,8 +9,6 @@ async function goTo(page: string) {
 }
 
 async function fill_input_field(field: string, value: string){
-    console.log("Campo: " + field);
-    console.log("value: " + value);
     await $("input[name='" + field + "']").sendKeys(value);
 }
 
@@ -19,13 +17,9 @@ async function erase_and_fill_input_field(field: string, value: string){
     .then( () => {
         $("input[name='" + field + "']").sendKeys(value);
     });
-    console.log("SHDFHASLIFUH AHHAHA\n");
-    console.log($("input[name='" + field + "']").getText());
 }
 
 async function fill_textarea_field(field: string, value: string){
-    console.log("Campo: " + field);
-    console.log("value: " + value);
     await $("textarea[name='" + field + "']").sendKeys(value);
 }
 
@@ -75,7 +69,6 @@ async function create_user_pf(email: string, psw: string, cpf: string){
     await $("input[name='confirmar_senha']").sendKeys(<string>psw);
     await element(by.buttonText('CONTINUAR')).click();
     const curr_url = String(await browser.getCurrentUrl());
-    console.log("url atual dps de criar fornecedor: " + curr_url);
     await expect(curr_url == 'http://localhost:4200/finish-registration').equal(true);
 }
 
