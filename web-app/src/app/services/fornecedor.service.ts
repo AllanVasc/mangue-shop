@@ -357,6 +357,16 @@ export class FornecedorService {
       .catch(this.catch);
   }
 
+  despachar(pacote: any): Promise<Fornecedor>{
+    return this.http.put(this.taURL + `/despachos`, JSON.stringify(pacote), {headers: this.headers})
+    .toPromise()
+    .then((res) => {
+      if(res.status === 201) return true;
+      else return null;
+    })
+    .catch(this.catch);
+  }
+
   private catch(erro: any): Promise<any>{
     console.error('Oops, something went wrong',erro);
     return Promise.reject(erro.message || erro);

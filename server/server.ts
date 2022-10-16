@@ -168,6 +168,27 @@ app.put('/fornecedor', function(req, res){
 
 });
 
+app.put('/despachos', function(req, res){
+  console.log("Server me escutou")
+  const pacote = req.body
+  console.log(pacote)
+  try{
+    var result = fornecedorService.despachar(pacote);
+    console.log(result)
+    console.log("aqui")
+    if(result){
+      res.status(201).send(result)
+    }
+    else{
+      res.status(403).send(result);
+    }
+  } catch (err){
+    const { message } = err;
+    res.status(400).send({message})
+  }
+
+});
+
 var server = app.listen(3000, function () {
   console.log('Server listening on port 3000!');
   console.log('All Database:\n');

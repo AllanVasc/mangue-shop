@@ -17,13 +17,19 @@
     <a>Produtos</a>
   </div>
   <a class="ordertitle"> Nº do Pedido</a>
-  <form>
+  <form [formGroup]="despachoForm" name="despacho">
     <div class="submiter">
-      <input type="text" id="ordernumber" name="ordernumber">
+      <input  formControlName="codigo" type="text" id="ordernumber" name="ordernumber">
     </div>
     <div class="buttondispatch">
-      <input type="submit" value="Despachado!">
+      <input (click)="despachar()" type="submit" value="Despachado!">
     </div>
+    <div class="msg-success">
+      <span *ngIf="despachavel">Despachado com Sucesso!</span>
+    </div>
+    <div class="msg-error">
+      <span *ngIf="codinexistente">Codígo do Pedido Incorreto</span>
+    </div> 
   </form>
   <button class="button">Listar Pedidos Enviados</button> 
   <a class="standby"> Aguardando</a>
