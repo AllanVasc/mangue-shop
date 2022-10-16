@@ -9,14 +9,10 @@ async function goTo(page: string) {
 }
 
 async function fill_input_field(field: string, value: string){
-    console.log("Campo: " + field);
-    console.log("value: " + value);
     await $("input[name='" + field + "']").sendKeys(value);
 }
 
 async function fill_textarea_field(field: string, value: string){
-    console.log("Campo: " + field);
-    console.log("value: " + value);
     await $("textarea[name='" + field + "']").sendKeys(value);
 }
 
@@ -66,7 +62,6 @@ async function create_user(email: string, psw: string, cpf: string){
     await $("input[name='confirmar_senha']").sendKeys(<string>psw);
     await element(by.buttonText('CONTINUAR')).click();
     const curr_url = String(await browser.getCurrentUrl());
-    console.log("url atual dps de criar fornecedor: " + curr_url);
     await expect(curr_url == 'http://localhost:4200/finish-registration').equal(true);
 }
 
@@ -116,7 +111,6 @@ defineSupportCode(function ({ Given, When, Then, Before, setDefaultTimeout }) {
         await create_user(TESTE_EMAIL, TESTE_SENHA, <string>value);
         await goTo('register-pf');
         const curr_url = String(await browser.getCurrentUrl());
-        console.log("TCHAMA: " + curr_url);
         await expect($("input[name='cpf']").isPresent()).to.eventually.equal(true);
         await fill_input_field("cpf", <string>value);
     });

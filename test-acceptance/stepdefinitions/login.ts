@@ -52,7 +52,6 @@ async function deleteUser() {
     await expect(curr_url === 'http://localhost:4200/').equal(true);
 }
 
-// Precisa verificar o nome das componentes!
 async function logOut(){
     await goToPage('dashboard');
     await element(by.buttonText('Sair')).click();
@@ -63,15 +62,15 @@ defineSupportCode(function ({ Given, When, Then, Before, setDefaultTimeout}){
 
     // Dando logout antes de iniciar os testes
     Before(async () => {
-        await goToPage('login');
-        if ((await browser.getCurrentUrl()) !== `http://localhost:4200/login`) {
+        await goToPage('');
+        if ((await browser.getCurrentUrl()) !== taURL) {
             await logOut();
         }
     });
     
     Given(/^não estou logado com nenhum usuário$/, async () => {
-        await goToPage('login');
-        if ((await browser.getCurrentUrl()) !== `http://localhost:4200/login`){
+        await goToPage('');
+        if ((await browser.getCurrentUrl()) !== taURL){
             await logOut();
         }
     });
@@ -82,14 +81,20 @@ defineSupportCode(function ({ Given, When, Then, Before, setDefaultTimeout}){
         await createUser(<string>email, <string>senha);
     });
 
-    Given(/^estou na página de login$/, async () => {
-        await goToPage('login');
-        if ((await browser.getCurrentUrl()) !== `http://localhost:4200/login`){
-            await logOut();
-        }
-        await goToPage('login');
-        await expect($("form[name='login']").isPresent()).to.eventually.equal(true);
+    Given(/^estou na página de "([^\"]*)"$/, async (page) => {
+        await goToPage(<string>page);
+        const curr_url = String(await browser.getCurrentUrl());
+        await expect(curr_url === taURL + page).equal(true);
     });
+
+    // Given(/^estou na página de login$/, async () => {
+    //     await goToPage('login');
+    //     if ((await browser.getCurrentUrl()) !== `http://localhost:4200/login`){
+    //         await logOut();
+    //     }
+    //     await goToPage('login');
+    //     await expect($("form[name='login']").isPresent()).to.eventually.equal(true);
+    // });
 
     When(/^o campo de e-mail é preenchido por "([^\"]*)"$/, async (email) => {
         await $("input[name='email']").sendKeys(<string>email);
