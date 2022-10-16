@@ -32,9 +32,15 @@ describe("O servidor", () => {
         "num_despachar":"",
     }
 
-    beforeAll(() => {server = require('../server')});
+    beforeAll(() => {
+      process.stdout.write("server tests: ");
+      server = require('../server')
+    });
 
-    afterAll(() => {server.closeServer()});
+    afterAll(() => {
+      console.log('\n');
+      server.closeServer()
+    });
 
     it("retorna um fornecedor em especifico pelo id", () => {
         return request.get(url + "/fornecedor/0")

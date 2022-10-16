@@ -4,7 +4,6 @@ import { FornecedorService } from './../src/fornecedor.service';
 describe("O serviço de clientes", () => {
   var originalTimeout: any;
   var fornecedorService: FornecedorService;
-  var client: any;
 
   var new_fornecedor_pf = {
     "nome_razao":"Aristoteles",
@@ -47,7 +46,7 @@ var new_fornecedor_pj = {
 }
 
   beforeAll(() => {
-    process.stdout.write("clients-service: ");
+    process.stdout.write("fornecedor-service tests: ");
   });
   beforeEach(() => {
     fornecedorService = new FornecedorService();
@@ -62,7 +61,7 @@ var new_fornecedor_pj = {
     console.log('\n');
   });
 
-
+  // Sempre antes de testes usar essas duas funções para manter a integridade do banco de dados
   function create_fornecedor(fornecedor: any){
     var result = fornecedorService.add(fornecedor);
   }
@@ -72,6 +71,7 @@ var new_fornecedor_pj = {
     fornecedorService.delete({email: fornecedor['email'], senha: fornecedor['senha'], id: aux_id});
   }
 
+//---------------------------------------------- JULIO ------------------------------------------------------------------------
   it("FornecedorService inicialmente tem apenas um fornecedor", () => {
     expect(fornecedorService.get().length).toBe(1);
   });
@@ -131,4 +131,42 @@ var new_fornecedor_pj = {
     expect(fornecedorService.getByEmail(new_fornecedor_pf['email'])).toBe(undefined);
   });
 
+//------------------------------------------------------ ALLAN ----------------------------------------------------------------
+  it("Autenticação do login", () => {
+    delete new_fornecedor_pf['id'];
+    create_fornecedor(new_fornecedor_pf);
+
+    var status = fornecedorService.authenticate(new_fornecedor_pf.email, new_fornecedor_pf.senha);
+    expect(status).toBe(true);
+    delete_fornecedor(new_fornecedor_pf);
+  });
+
+  // Internamente usa a sendEmail()
+  it("Redefinição de senha: envio de email", async () => {
+    create_fornecedor(new_fornecedor_pf);
+    return fornecedorService.forgot_password(new_fornecedor_pf.email)
+      .then(status => {
+        expect(status).toBe(true);
+        delete_fornecedor(new_fornecedor_pf);
+    });
+  });
+
+  it("Atualiza somente a senha do fornecedor", () => {
+    var backup_fornecedor = new_fornecedor_pf;
+    create_fornecedor(new_fornecedor_pf);
+    var pacote = {
+      email: "",
+      new_password: "",
+    };
+
+    pacote.email = new_fornecedor_pf.email;
+    pacote.new_password = "updatesenha";
+
+    var status = fornecedorService.update_password(pacote);
+    expect(status).toBe(true);
+    backup_fornecedor.senha = pacote.new_password;
+    delete_fornecedor(backup_fornecedor);
+  });
+
+//-----------------------------------------------------------------------------------------------------------------------------
 })

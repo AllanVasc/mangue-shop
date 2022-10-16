@@ -45,7 +45,7 @@ export class FornecedorService{
             return "Houve um erro de validação na sua requisição";
         }
 
-        console.log("Fornecedor recebido foi validado!\n");
+        // console.log("Fornecedor recebido foi validado!\n");
 
         var newFornecedor = new Fornecedor({
             id: this.idCount,
@@ -70,8 +70,8 @@ export class FornecedorService{
         this.fornecedores.add(newFornecedor);
         this.idCount++;
 
-        console.log("Novo fornecedor adicionado!\n");
-        console.log(newFornecedor);
+        // console.log("Novo fornecedor adicionado!\n");
+        // console.log(newFornecedor);
 
         return "Sucesso";
     }
@@ -101,7 +101,7 @@ export class FornecedorService{
             return "Houve um erro de validação na sua requisição";
         }
 
-        console.log("Fornecedor recebido foi validado!\n");
+        // console.log("Fornecedor recebido foi validado!\n");
 
         if (data){
             var fornecedorUpdate = new Fornecedor(data);
@@ -119,7 +119,7 @@ export class FornecedorService{
 
             var index = this.fornecedores.getData().indexOf(data);
             this.fornecedores.update(index, fornecedorUpdate);
-            console.log("Fornecedor atualizado com sucesso\n");
+            // console.log("Fornecedor atualizado com sucesso\n");
             return "Sucesso";
         }
         return "Houve um erro não esperado";
@@ -134,7 +134,7 @@ export class FornecedorService{
       if(data){
         if(data['email'] == delete_email && data['senha'] == delete_password){
           var index = this.fornecedores.getData().indexOf(data);
-          console.log("Vou deletar o de id: " + delete_id + "que eh o index: " + index);
+          // console.log("Vou deletar o de id: " + delete_id + "que eh o index: " + index);
           this.fornecedores.delete(index);
           return "Sucesso";
         }
@@ -150,7 +150,7 @@ export class FornecedorService{
 
       fornecedor_to_change.senha = pacote.new_password;
       this.fornecedores.update(index, fornecedor_to_change);
-      console.log("Senha Atualizada!");
+      // console.log("Senha Atualizada!");
       return true;
     }
 
@@ -189,7 +189,7 @@ export class FornecedorService{
     authenticate(email: string, password: string): boolean {
         var fornecedor = this.getByEmail(email);
         if(fornecedor && fornecedor.senha == password){
-            console.log("Authenticate: Sucess");
+            // console.log("Authenticate: Success");
             return true;
         }
         return false;
@@ -369,7 +369,7 @@ export class FornecedorService{
     // e a utilização de wait
     async forgot_password(email : string){
       var usuario = this.getByEmail(email);
-      console.log("Sending email to: " + email);
+      // console.log("Sending email to: " + email);
       if(usuario){
         await this.sendEmail({
           email: usuario.email,
@@ -419,7 +419,7 @@ export class FornecedorService{
           // Enviando
           transporter.sendMail(mailOptions, function(error: any, info: any){
             if(!error){
-              console.log("SUCESS! sent to " + body.email);
+              // console.log("SUCESS! sent to " + body.email);
               resolve(true);
             }
             else{

@@ -5,10 +5,12 @@ describe("O serviço de banco de dados", () => {
     var teste = {nome: "Jose", curso:"Astrofisica", faculdade:"USP", id:0}
 
     beforeAll(() => {
-      process.stdout.write("database: ");
+      process.stdout.write("database tests: ");
     });
     beforeEach(() => db = new DBService('teste'));
-    afterAll(() => {console.log('\n')});
+    afterAll(() => {
+      console.log('\n')
+    });
   
     function addObj(obj: any){
       db.add(obj);

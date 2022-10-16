@@ -118,7 +118,7 @@ app.get('/fornecedor/email/:email', function(req, res){
   try{
     const fornecedor = fornecedorService.getByEmail(email);
     if(fornecedor){
-      console.log("encontrei o fornecedor")
+      // console.log("encontrei o fornecedor")
       res.status(200).send(fornecedor);
     } else {
       res.status(404).send({message: "Fornecedor nao encontrado"});
@@ -132,8 +132,8 @@ app.get('/fornecedor/email/:email', function(req, res){
 app.delete('/fornecedor/:id', function(req, res){
   const id = req.params.id;
   const deleteObject = req.body;
-  console.log("meus parametros\n");
-  console.log(deleteObject);
+  // console.log("meus parametros\n");
+  // console.log(deleteObject);
 
   try{
     var result = fornecedorService.delete(deleteObject);
@@ -191,8 +191,8 @@ app.put('/despachos', function(req, res){
 
 var server = app.listen(3000, function () {
   console.log('Server listening on port 3000!');
-  console.log('All Database:\n');
-  console.log(fornecedorService.get());
+  // console.log('All Database:\n');
+  // console.log(fornecedorService.get());
 })
 
 function closeServer(): void {
