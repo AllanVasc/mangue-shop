@@ -100,8 +100,8 @@ async function create_user_pj(email: string, psw: string, cnpj: string){
     await expect(curr_url == 'http://localhost:4200/finish-registration').equal(true);
 }
 
-var curr_email = "";
-var curr_senha = "";
+var aux_email = "";
+var aux_cnpj = "02300800001234";
 
 var TESTE_EMAIL = "roberval@gmail.com"
 var TESTE_SENHA = "abacaxi123"
@@ -138,9 +138,14 @@ defineSupportCode(function ({ Given, When, Then, Before, setDefaultTimeout }) {
     });
 
     Given(/^o usuário havia preenchido que o campo email tem o valor "([^\"]*)" que ja existe no banco de dados do servidor$/, async(email)=>{
-        await create_user_pj(<string>email, TESTE_SENHA, TESTE_CNPJ);
-        
-
+        await logOut();
+        await create_user_pj(<string>email, TESTE_SENHA, aux_cnpj);
+        aux_email = <string>email;
+        await login(TESTE_EMAIL, TESTE_SENHA);
+        await goTo('/update-account');
+        const curr_url = String(await browser.getCurrentUrl());
+        await expect(curr_url == 'http://localhost:4200/update-account').equal(true);
+        await erase_and_fill_input_field('email', <string>email);
     });
 
     When(/^o usuário clicar no botão salvar$/, async ()=> {
@@ -153,6 +158,15 @@ defineSupportCode(function ({ Given, When, Then, Before, setDefaultTimeout }) {
         await expect(curr_url == 'http://localhost:4200/account').equal(true);
         await logOut();
         await delete_user(TESTE_EMAIL, TESTE_SENHA);
+    });
+
+    Then(/^será exibida uma mensagem de erro informando que a atualizacao nao foi realizada no sistema$/, async()=>{
+        await browser.switchTo().alert().accept();
+        const curr_url = String(await browser.getCurrentUrl());
+        await expect(curr_url == 'http://localhost:4200/update-account').equal(true);
+        await logOut();
+        await delete_user(TESTE_EMAIL, TESTE_SENHA);
+        await delete_user(aux_email, TESTE_SENHA);
     });
 
 });
