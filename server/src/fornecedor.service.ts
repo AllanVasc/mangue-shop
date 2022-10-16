@@ -195,7 +195,7 @@ export class FornecedorService{
         return false;
     }
 
-    validateRegistrationPF(fornecedor: Fornecedor): any{
+    validateRegistrationPF(fornecedor: any): any{
 
       const schema = Joi.object({
           nome_razao: Joi.string().pattern(new RegExp('^[a-zA-Z \']{5,80}$')).required().messages({
