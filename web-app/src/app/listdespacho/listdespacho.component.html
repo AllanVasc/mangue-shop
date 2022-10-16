@@ -1,0 +1,25 @@
+<div class="main">
+  <div class="topnav">
+    <div class="left-aligned">
+      <img src="assets/images/cropped-crab.png">
+      <h4>Despacho de Pedidos - Lista</h4>
+    </div>
+    <div class="profile">
+      <img class="bell" src="assets/images/bell.png">
+      <h4>{{fornecedor.nome_exibicao}}</h4>
+      <img class="circle" src="assets/images/User.png">
+    </div>
+  </div>
+  <div class="below-topnav">
+    <div class="rectangle">
+      <h2>Pedidos Pendentes de Despacho</h2>
+      <div class="flex-container">
+        <a class="description">Olá, {{fornecedor.nome_exibicao}}! <br> Aqui você pode verificar os códigos dos pedidos pendentes de despacho.</a>
+        <div class="notification">Código: {{fornecedor.despachar[0]}}</div>
+        <div class="notification">Código: {{fornecedor.despachar[1]}}</div>
+        <div class="notification">Código: {{fornecedor.despachar[2]}}</div>
+        <button class="button" [routerLink]="'/despachos'">Voltar</button>
+        </div>
+      </div>
+  </div>
+</div>
