@@ -118,7 +118,6 @@ export class FornecedorService{
             fornecedorUpdate.email = fornecedor.email;
 
             var index = this.fornecedores.getData().indexOf(data);
-            console.log("IndexOf(Data): " + index);
             this.fornecedores.update(index, fornecedorUpdate);
             console.log("Fornecedor atualizado com sucesso\n");
             return "Sucesso";
@@ -136,9 +135,7 @@ export class FornecedorService{
         if(data['email'] == delete_email && data['senha'] == delete_password){
           var index = this.fornecedores.getData().indexOf(data);
           console.log("Vou deletar o de id: " + delete_id + "que eh o index: " + index);
-          console.log(this.getById(Number(delete_id)))
           this.fornecedores.delete(index);
-          console.log(this.getById(Number(delete_id)))
           return "Sucesso";
         }
         return "Houve um erro na validação das credenciais do fornecedor";
@@ -154,8 +151,6 @@ export class FornecedorService{
       fornecedor_to_change.senha = pacote.new_password;
       this.fornecedores.update(index, fornecedor_to_change);
       console.log("Senha Atualizada!");
-      console.log("Lista de fornecedores:")
-      console.log(this.fornecedores.data);
       return true;
     }
 
