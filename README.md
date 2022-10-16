@@ -50,3 +50,41 @@ sudo npm install
 cd src
 ng serve
 ```
+
+### Buildar testes
+
+
+```bash
+cd test-acceptance
+sudo npm install
+npm run webdriver-update
+```
+
+### Rodando Testes
+- Testes para o Server
+
+```bash
+cd server
+npm test
+
+```
+- Testes de Interface
+
+Recomendamos utilizar o navegador Firefox visto que versões mais recentes do Webdriver estão apresentando problemas com o Chrome.
+
+```bash
+cd server
+node server.js
+
+# Em outro terminal
+cd web-app
+npm start
+
+# Em outro terminal
+cd test-acceptance
+npm run webdriver-start
+
+# Em outro terminal
+cd test-acceptance
+npm test
+```

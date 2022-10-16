@@ -71,3 +71,14 @@
     background-repeat: no-repeat;
     background-position: 20px;
 }
+
+.voltar-button{
+    margin-top: 20px;
+    justify-self: center;
+    height: 60px;
+    background: #FA991C;
+    border-radius: 50px;
+    font-size: 20px;
+    font-family: 'Inter';
+    width: 400px;
+}
