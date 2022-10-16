@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter';
+}
+
+.main{
+    padding: 0;
+    margin: 0;
+    height: 98vh;
+    width: 98vw;
+}
+
+.topnav{
+    display: flex;
+    height: 16vh;
+    background-color: #1a687e;
+}
+
+.left-aligned{
+    display: flex;
+    flex: 50%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.left-aligned img{
+    height: 65%;
+    margin-left: 4%;
+}
+
+.left-aligned h4{
+    text-align: center;
+    margin-left: 10%;
+    font-size: 3.3vh;
+    color: white;
+}
+
+.profile{
+    flex: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.profile .circle{
+    margin-left: 2%;
+    margin-right: 2%;
+    height: 50%;
+    background-color: white;
+    padding: 1px;
+    border-radius: 50%;
+    border: 10px;
+}
+
+.profile h4{
+    font-size: 3.3vh;
+    color: white;
+}
+
+.profile .bell{
+    margin-right: 5%;
+}
+
+.below-topnav{
+    min-height: 85vh;
+    display: flex;
+    margin-bottom: 0px;
+}
+
+.rectangle{
+    width: 100vw;
+    height: 116vh;
+    background: #FBF3F2;
+}
+
+.rectangle .flex-container{
+	background-color: #1c768fa9;
+	position: relative;
+	top:15%;
+	left: 25%;
+	height: 60%;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 15px;
+}
+
+.notification{
+	width: 80%;
+	height: 10%;
+	display: flex;
+	background-color: #032539;
+	color: white;
+	/* border: 2px solid red; */
+	justify-content: center;
+	align-items: center;
+	border-radius: 30px;
+	margin: 3%;
+	background-image: url('../../assets/images/delivery-truck.png');
+	background-size: 6%;
+	background-repeat: no-repeat;
+	background-position-y: center;
+	background-position: 3%;
+}
+
+h2{
+    position: absolute;
+    width: 46vw;
+    height: 11vh;
+    left: 34vw;
+    top: 20vh;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.1vw;
+    line-height: 1vh;
+    display: flex;
+    align-items: center;
+    color: #032539;
+    padding: 0%;
+    margin: 0%;
+}
+
+.description{
+    position: absolute;
+    width:44vw;
+    height: 20vh;
+    left: 4vw;
+    top: 1vh;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.2vw;
+    line-height: 3vh;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    text-justify: auto;
+    text-align: center;
+}
+
+.button{
+    top: 30vh;
+    left: 1vw;
+    width: 20vw;
+    height: 30px;
+    font-weight: bold;
+    background: #FA991C;
+    border-radius: 50px;
+    font-size: 15px;
+    font-family: 'Inter';
+   
+}
+
+.button:hover{
+    background-color: #de7e00;
+}

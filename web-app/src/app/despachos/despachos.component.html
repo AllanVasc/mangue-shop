@@ -32,7 +32,7 @@
       <span *ngIf="codinexistente">Codígo do Pedido Inválido</span>
     </div> 
   </form>
-  <button class="button">Listar Pedidos Enviados</button> 
+  <button class="button" [routerLink]="'/listdespacho'">Listar Pedidos Despacháveis</button> 
   <a class="standby"> Aguardando</a>
   <a class="dispatch"> Despachar</a>
   <a class="transit"> Em Trânsito</a>

@@ -17,6 +17,7 @@ import { UpdateAccountComponent } from './update-account/update-account.componen
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { ListdespachoComponent } from './listdespacho/listdespacho.component';
 
 const routes: Routes = [
   {
@@ -72,6 +73,11 @@ const routes: Routes = [
   {
     path: "notifications",
     component: NotificationsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "listdespacho",
+    component: ListdespachoComponent,
     canActivate: [AuthGuard]
   },
   
