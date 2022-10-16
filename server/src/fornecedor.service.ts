@@ -178,6 +178,17 @@ export class FornecedorService{
     isEmailRegistered(email: string): boolean {
         return this.fornecedores.getData().find( ( f : Fornecedor) => f.email == email) ? true : false;
     }
+
+    isCodeExists(pacote: any): boolean {
+      console.log("isCodeExists: ");
+      console.log(pacote)
+
+      const curr_fornecedor = this.getByEmail(pacote.email);
+      const codigo = pacote.codigo;
+      var result = curr_fornecedor.despachar.find( ( s : string) => s == codigo) ? true : false;
+      console.log("O codigo foi encontrado:"+ result)
+      return result;
+    }
     
     // Autenticação para o Login
     authenticate(email: string, password: string): boolean {
@@ -422,5 +433,39 @@ export class FornecedorService{
             }
           });
       });
+    }
+
+    despachar(pacote: any): Boolean{
+      const email = pacote.email;
+      const codigo = pacote.codigo;
+      console.log(email)
+      console.log(codigo)
+
+      if(this.isCodeExists(pacote)){
+        // Achei o código no fornecedor
+        console.log("o codigo foi encontrado")
+        this.update_despacho(pacote);
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+
+    // Only Update despacho
+    update_despacho(pacote: any){
+      var fornecedor_to_change = this.getByEmail(pacote.email);
+      var index = this.fornecedores.getData().indexOf(fornecedor_to_change);
+      console.log(index)
+      var position = fornecedor_to_change.despachar.indexOf(pacote.codigo);
+      console.log("position:" + position)
+      fornecedor_to_change.despachar.splice(position,1);
+      console.log(fornecedor_to_change.despachar);
+      fornecedor_to_change.num_despachar = fornecedor_to_change.num_despachar -1;
+      this.fornecedores.update(index, fornecedor_to_change);
+      console.log("DESPACHO Atualizado!");
+      console.log("Lista de fornecedores:")
+      console.log(this.fornecedores.data);
+      return true;
     }
 }
