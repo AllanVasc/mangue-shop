@@ -3,7 +3,7 @@
     <img class="logo" src="assets/images/mangueshop-logo.png"/>
   </div>
   <div class="errorMsg">
-    <p *ngIf="this.error">{{this.errorMessage}} </p>
+    <p *ngIf="this.error" name="error_message">{{this.errorMessage}} </p>
   </div>
   <div class="container">
     <form>
@@ -78,7 +78,6 @@
       <br>
       <br>
       <div class="button">
-        <!-- <input type="submit" value="CONTINUAR" (click)="registerFornecedor()"> [routerLink]="'/finish-registration'"  >*/ -->
         <input type="submit" value="CONTINUAR" (click)="registerFornecedorPF()">
       </div>
     </form>

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Fornecedor } from '../fornecedor';
 import { FornecedorService } from '../services/fornecedor.service';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-update-account',
   templateUrl: './update-account.component.html',
@@ -13,7 +15,7 @@ export class UpdateAccountComponent implements OnInit {
   error = false;
   errorMessage = "";
 
-  constructor(private fornecedorService: FornecedorService) { }
+  constructor(private fornecedorService: FornecedorService, private router: Router) { }
 
   ngOnInit() {
     this.fornecedorService.getFornecedor()
@@ -47,7 +49,7 @@ export class UpdateAccountComponent implements OnInit {
     .then( (result) => {
         if(result === "Sucesso"){
           alert("Seus dados foram atualizados com sucesso!")
-          window.location.reload();
+          this.router.navigate(['/account']);
         }
         else{
           this.error = true;

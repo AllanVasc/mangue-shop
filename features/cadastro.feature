@@ -66,25 +66,3 @@ And o usuário preencheu o campo "Descrição"
 When o usuário clicar no botão "Cadastrar"
 Then o usuário será direcionado para uma página "Cadastro finalizado com sucesso"
 And será exibida uma mensagem de sucesso no cadastro de fornecedor
-
-Scenario: Cadastro válido de fornecedor
-Given um usuário que ainda mão se cadastrou está na página "Cadastro Fornecedor"
-And o usuário preencheu o campo "CPF" como "99988877700" e não há nenhum outro cadastro no sistema com essa combinação de campo e valor
-And o usuário preencheu o campo "Nome" como "Maria"
-And o usuário preencheu o campo "Data de nascimento" como "01/01/2000"
-And o usuário preencheu o campo "País" como "Brasil"
-And o usuário preencheu o campo "Estado" como "Pernambuco"
-And o usuário preencheu o campo "Cidade" como "Recife"
-And o usuário preencheu o campo "Bairro" como "Pina"
-And o usuário preencheu o campo "Rua" como "Avenida Sicrano"
-And o usuário preencheu o campo "Número" como "100"
-And o usuário preencheu o campo "Complemento" como "Apto 200"
-And o usuário preencheu o campo "Email" como "maria@cin.ufpe.br" e não há nenhum outro cadastro no sistema com essa combinação de campo e valor
-And o usuário preencheu o campo "Senha" como "password"
-And o usuário preencheu o campo "Nome de usuário" como "maria"
-And o usuário preencheu o campo "Descrição" como "Maria Móveis"
-And o usuário deixou os campos "Facebook", "Instagram" e "Logo" em branco 
-When o usuário clicar no botão "Cadastrar"
-Then o usuário será direcionado para uma página "Cadastro finalizado com sucesso"
-And será exibida uma mensagem de sucesso no cadastro de fornecedor 
-
