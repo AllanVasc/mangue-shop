@@ -168,14 +168,11 @@ app.put('/fornecedor', function(req, res){
 
 });
 
+/**handles http put requests from app regarding dispach of code */
 app.put('/despachos', function(req, res){
-  console.log("Server me escutou")
   const pacote = req.body
-  console.log(pacote)
   try{
     var result = fornecedorService.despachar(pacote);
-    console.log(result)
-    console.log("aqui")
     if(result){
       res.status(201).send(result)
     }

@@ -12,6 +12,7 @@ export class ListdespachoComponent implements OnInit {
   fornecedor: Fornecedor = new Fornecedor();
 
   constructor(private fornecedorService: FornecedorService) { }
+  /** Function to retrive suplier database intel*/
   ngOnInit() {
     this.fornecedorService.getFornecedor()
     .then( (res) => {
@@ -22,7 +23,7 @@ export class ListdespachoComponent implements OnInit {
       console.log(err);
     });
   }
-
+  /** Function to handle logouts inside the dispach page */
   logout(){
     this.fornecedorService.logOut();
   }

@@ -356,6 +356,7 @@ export class FornecedorService {
       .catch(this.catch);
   }
 
+  /** Function that makes http put request to server from despachos page (called by despachar() inside despachos.components.ts) */
   despachar(pacote: any): Promise<Fornecedor>{
     return this.http.put(this.taURL + `/despachos`, JSON.stringify(pacote), {headers: this.headers})
     .toPromise()
