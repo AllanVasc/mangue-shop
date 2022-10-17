@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+/** Import Necessary for form */
 import { 
   FormBuilder,
   FormControl,
@@ -16,9 +16,11 @@ import { FornecedorService } from '../services/fornecedor.service';
   styleUrls: ['./despachos.component.css']
 })
 
+
 export class DespachosComponent implements OnInit {
   fornecedor: Fornecedor = new Fornecedor();
   despachoForm: FormGroup;
+  /** Bool that decide if messages regarding success or failure of dispach will appear */
   codinexistente: Boolean = false;
   despachavel: Boolean = false;
   pacote = {
@@ -32,6 +34,7 @@ export class DespachosComponent implements OnInit {
     });
   }
 
+  /** Dispach function to define if code given is dispachable or not */
   despachar(): void {
     this.pacote.email = this.fornecedor.email;
     this.pacote.codigo = this.despachoForm.value.codigo;
@@ -47,6 +50,7 @@ export class DespachosComponent implements OnInit {
       .catch(() => (this.codinexistente = true));
   }
 
+  /** Function to retrive suplier database intel*/
   ngOnInit() {
     this.fornecedorService.getFornecedor()
     .then( (res) => {
@@ -57,7 +61,7 @@ export class DespachosComponent implements OnInit {
       console.log(err);
     })
   }
-
+  /** Function to handle logouts inside the dispach page */
   logout(){
     this.fornecedorService.logOut();
   }

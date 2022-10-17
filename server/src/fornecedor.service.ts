@@ -174,14 +174,16 @@ export class FornecedorService{
         return this.fornecedores.getData().find( ( f : Fornecedor) => f.email == email) ? true : false;
     }
 
+    /** Verifies if given code is present inside the dispachable codes array for that 
+     * specific suplier */
     isCodeExists(pacote: any): boolean {
-      console.log("isCodeExists: ");
-      console.log(pacote)
+      //console.log("isCodeExists: ");
+      //console.log(pacote)
 
       const curr_fornecedor = this.getByEmail(pacote.email);
       const codigo = pacote.codigo;
       var result = curr_fornecedor.despachar.find( ( s : string) => s == codigo) ? true : false;
-      console.log("O codigo foi encontrado:"+ result)
+      //console.log("O codigo foi encontrado:"+ result)
       return result;
     }
     
@@ -430,15 +432,16 @@ export class FornecedorService{
       });
     }
 
+    /** Verifies if given dispach code is present in the user's database and update it if true */
     despachar(pacote: any): Boolean{
       const email = pacote.email;
       const codigo = pacote.codigo;
-      console.log(email)
-      console.log(codigo)
+      //console.log(email)
+      //console.log(codigo)
 
       if(this.isCodeExists(pacote)){
-        // Achei o código no fornecedor
-        console.log("o codigo foi encontrado")
+        // Code found inside fornecedor
+        //console.log("o codigo foi encontrado")
         this.update_despacho(pacote);
         return true;
       }
@@ -447,20 +450,21 @@ export class FornecedorService{
       }
     }
 
-    // Only Update despacho
+    /** Updates the dispach array containing the dispachable codes, removing the code supplied from the array 
+     * and also updates the total number of codes present in the database for that user */
     update_despacho(pacote: any){
       var fornecedor_to_change = this.getByEmail(pacote.email);
       var index = this.fornecedores.getData().indexOf(fornecedor_to_change);
-      console.log(index)
+      //console.log(index)
       var position = fornecedor_to_change.despachar.indexOf(pacote.codigo);
-      console.log("position:" + position)
+      //console.log("position:" + position)
       fornecedor_to_change.despachar.splice(position,1);
-      console.log(fornecedor_to_change.despachar);
+      //console.log(fornecedor_to_change.despachar);
       fornecedor_to_change.num_despachar = fornecedor_to_change.num_despachar -1;
       this.fornecedores.update(index, fornecedor_to_change);
-      console.log("DESPACHO Atualizado!");
-      console.log("Lista de fornecedores:")
-      console.log(this.fornecedores.data);
+      //console.log("DESPACHO Atualizado!");
+      //console.log("Lista de fornecedores:")
+      //console.log(this.fornecedores.data);
       return true;
     }
 }
