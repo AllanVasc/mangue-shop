@@ -179,14 +179,10 @@ it("verifica código de despacho válido e atualiza array", () => {
     email: "",
     codigo: "",
   };
-  console.log(new_fornecedor_pf)
   pacote.email = new_fornecedor_pf.email;
   pacote.codigo = "ABC123";
 
-  console.log(pacote)
-
   var status = fornecedorService.despachar(pacote);
-  console.log("STATUS =" + status);
   expect(status).toBe(true);
   new_fornecedor_pf.despachar = ["ABC123","JP115","GS30","JP25"];
   new_fornecedor_pf.num_despachar = 4;
