@@ -28,8 +28,8 @@ describe("O servidor", () => {
         "senha":"12345678",
         "confirmar_senha": "12345678",
         "tipo":"PF",
-        "despachar":"",
-        "num_despachar":"",
+        "despachar": ["ABC123","JP115","GS30","JP25"],
+        "num_despachar":4,
     }
 
     beforeAll(() => {
@@ -83,6 +83,36 @@ describe("O servidor", () => {
             });
     });
 
+    //TESTE DE JOAO PAULO PARA A FUNCAO DE DESPACHOS
+    it("Verificacao de codigo de despacho", () => {
+      const fornecedorService = new FornecedorService();
+
+      var fornecedor_despacho = new_fornecedor;
+      fornecedor_despacho['id'] = fornecedorService.getByEmail(new_fornecedor['email'])['id'];
+      
+      var pacote = {
+        email: "",
+        codigo: "",
+      };
+      
+      pacote.email = fornecedor_despacho.email;
+      pacote.codigo = "ABC123";
+      
+      var options = {
+        method: 'PUT', 
+        uri: (url + '/despachos'),
+        body: pacote, 
+        json: true
+      };
+      
+      return request(options)
+            .then( (body:any) => {
+            expect(body).toBe(true);
+            })
+            .catch( (e: any) => {
+                expect(e).toEqual(null);
+            });
+  });
     
     it("atualiza um fornecedor que ja foi cadastrado", () => {
         const fornecedorService = new FornecedorService();
@@ -90,7 +120,7 @@ describe("O servidor", () => {
         var fornecedor_update = new_fornecedor;
         fornecedor_update['descricao'] = 'A melhor loja da rua 1 e da rua 2!';
         fornecedor_update['id'] = fornecedorService.getByEmail(new_fornecedor['email'])['id'];
-        
+
         var options = {
             method: 'PUT',
             uri: (url + '/fornecedor'), 
@@ -186,30 +216,5 @@ describe("O servidor", () => {
           })
           .catch( (error: any) => expect(error).toEqual(null));
     });
-
-    it("Verificacao de codigo de despacho", () => {
-      var pacote = {
-        email: "",
-        codigo: "",
-      };
-      
-      pacote.email = fornecedor_julio.email;
-      pacote.codigo = "ABC123";
-      
-      var options = {
-        method: 'PUT', 
-        uri: (url + '/despachos'),
-        body: pacote, 
-        json: true
-      };
-      
-      return request(options)
-            .then( (body:any) => {
-            expect(body).toBe(true);
-            })
-            .catch( (e: any) => {
-                expect(e).toEqual(null);
-            });
-  });
 
 })

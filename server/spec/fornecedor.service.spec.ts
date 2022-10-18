@@ -172,7 +172,6 @@ var new_fornecedor_pj = {
 
 it("verifica código de despacho válido e atualiza array", () => {
   new_fornecedor_pf.senha = new_fornecedor_pf.confirmar_senha;
-  console.log("RESUMO: ", JSON.stringify(new_fornecedor_pf));
 
   create_fornecedor(new_fornecedor_pf);
   var pacote = {
