@@ -73,6 +73,16 @@
 	border-radius: 15px;
 }
 
+.close{
+	height: 5%;
+	width: 5%;
+	position: relative;
+	top: -10%;
+	left: 40%;
+	background-color: #1c768fa9;
+	-ms-text-size-adjust: auto;
+}
+
 .notification{
 	width: 80%;
 	height: 10%;
