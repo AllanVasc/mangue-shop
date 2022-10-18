@@ -178,10 +178,10 @@ export class FornecedorService{
      * specific suplier */
     isCodeExists(pacote: any): boolean {
       //console.log("isCodeExists: ");
-      //console.log(pacote)
-
-      const curr_fornecedor = this.getByEmail(pacote.email);
-      const codigo = pacote.codigo;
+      //console.log(pacote);
+      var curr_fornecedor = this.getByEmail(pacote.email);
+      //console.log(curr_fornecedor);
+      var codigo = pacote.codigo;
       var result = curr_fornecedor.despachar.find( ( s : string) => s == codigo) ? true : false;
       //console.log("O codigo foi encontrado:"+ result)
       return result;

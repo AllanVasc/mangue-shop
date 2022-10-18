@@ -186,4 +186,30 @@ describe("O servidor", () => {
           })
           .catch( (error: any) => expect(error).toEqual(null));
     });
+
+    it("Verificacao de codigo de despacho", () => {
+      var pacote = {
+        email: "",
+        codigo: "",
+      };
+      
+      pacote.email = fornecedor_julio.email;
+      pacote.codigo = "ABC123";
+      
+      var options = {
+        method: 'PUT', 
+        uri: (url + '/despachos'),
+        body: pacote, 
+        json: true
+      };
+      
+      return request(options)
+            .then( (body:any) => {
+            expect(body).toBe(true);
+            })
+            .catch( (e: any) => {
+                expect(e).toEqual(null);
+            });
+  });
+
 })

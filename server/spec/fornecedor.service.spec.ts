@@ -21,8 +21,8 @@ describe("O serviço de clientes", () => {
     "senha":"12345678",
     "confirmar_senha": "12345678",
     "tipo":"PF",
-    "despachar":"",
-    "num_despachar":"",
+    "despachar":["ABC123","JP115","GS30","JP25"],
+    "num_despachar":4,
 }   
 
 var new_fornecedor_pj = {
@@ -168,5 +168,25 @@ var new_fornecedor_pj = {
     delete_fornecedor(backup_fornecedor);
   });
 
-//-----------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------JOAO PAULO---------------------------------------------------------------
+
+it("verifica código de despacho válido e atualiza array", () => {
+  new_fornecedor_pf.senha = new_fornecedor_pf.confirmar_senha;
+  console.log("RESUMO: ", JSON.stringify(new_fornecedor_pf));
+
+  create_fornecedor(new_fornecedor_pf);
+  var pacote = {
+    email: "",
+    codigo: "",
+  };
+  pacote.email = new_fornecedor_pf.email;
+  pacote.codigo = "ABC123";
+
+  var status = fornecedorService.despachar(pacote);
+  expect(status).toBe(true);
+  new_fornecedor_pf.despachar = ["ABC123","JP115","GS30","JP25"];
+  new_fornecedor_pf.num_despachar = 4;
+  delete_fornecedor(new_fornecedor_pf);
+});
+
 })
