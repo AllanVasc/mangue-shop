@@ -3,7 +3,7 @@
   <h4>Despacho de Pedidos</h4>
   <img class="circle" src="assets/images/User.png">
   <h4 class="right">{{fornecedor.nome_exibicao}}</h4>
-  <img class="bell" src="assets/images/bell.png">
+  <button class="bell" [routerLink]="'/notifications'"><img class="bell" src="assets/images/bell.png"></button>
 </div>
 <div class="rectangle">
   <h2 class="title">Indique o Despacho dos seus pedidos!</h2>
@@ -30,9 +30,9 @@
     </div>
     <div class="msg-error">
       <span *ngIf="codinexistente">Codígo do Pedido Inválido</span>
-    </div> 
+    </div>
   </form>
-  <button class="button" [routerLink]="'/listdespacho'">Listar Pedidos Despacháveis</button> 
+  <button class="button" [routerLink]="'/listdespacho'">Listar Pedidos Despacháveis</button>
   <a class="standby"> Aguardando</a>
   <a class="dispatch"> Despachar</a>
   <a class="transit"> Em Trânsito</a>
