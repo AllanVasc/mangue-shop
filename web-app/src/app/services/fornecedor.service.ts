@@ -154,7 +154,7 @@ export class FornecedorService {
 
   validateRegistrationPF(fornecedor: Fornecedor): any{
 
-    const nome_cpf = {nome_razao: fornecedor['nome_razao'], CPF_CNPJ: fornecedor['CPF_CNPJ']};
+    const nome_cpf = {nome_razao: fornecedor['nome_razao'], CPF_CNPJ: fornecedor['CPF_CNPJ'], tipo: fornecedor['tipo']};
 
     const schema = Joi.object({
         nome_razao: Joi.string().pattern(new RegExp('^[a-zA-Z \']{5,80}$')).required().messages({
@@ -168,7 +168,8 @@ export class FornecedorService {
           'string.empty': `O campo "CPF" não pode ser vazio`,
           'string.pattern.base': `O campo "CPF" deve ser composto somente por dígitos numéricos correspondentes a um CPF`,
           'any.required': `O campo "CPF" é um campo obrigatório`
-        })
+        }),
+        tipo: Joi.string().pattern(new RegExp('^PF$')).required()
     });
     
     const v1 = schema.validate(nome_cpf);
@@ -179,7 +180,7 @@ export class FornecedorService {
 
   validateRegistrationPJ(fornecedor: any): any{
 
-    const razao_cnpj = {nome_razao: fornecedor['nome_razao'], CPF_CNPJ: fornecedor['CPF_CNPJ']};
+    const razao_cnpj = {nome_razao: fornecedor['nome_razao'], CPF_CNPJ: fornecedor['CPF_CNPJ'], tipo: fornecedor['tipo']};
 
     const schema = Joi.object({
         nome_razao: Joi.string().pattern(new RegExp('^[a-zA-Z \']{5,80}$')).required().messages({
@@ -193,7 +194,8 @@ export class FornecedorService {
           'string.empty': `O campo "CNPJ" não pode ser vazio`,
           'string.pattern.base': `O campo "CNPJ" deve ser composto somente por dígitos numéricos correspondentes a um CNPJ`,
           'any.required': `O campo "CNPJ" é um campo obrigatório`
-        })
+        }),
+        tipo: Joi.string().pattern(new RegExp('^PJ$')).required()
     });
 
     const v1 = schema.validate(razao_cnpj);
@@ -272,7 +274,7 @@ export class FornecedorService {
         }),
         despachar: Joi.allow(null, ''),
         num_despachar: Joi.allow(null, ''),
-        tipo: Joi.string().pattern(new RegExp('^PJ$')).required()
+        tipo: Joi.string()
     });
 
     return schema.validate(fornecedor);
